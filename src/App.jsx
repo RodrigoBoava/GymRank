@@ -1,30 +1,58 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import Navbar from "./components/Navbar";
+import BottomNav from "./components/BottomNav";
+import Rodape from "./components/Rodape";
 import Home from "./pages/Home";
 import Ranking from "./pages/Ranking";
 import Calorias from "./pages/Calorias";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import Painel from "./pages/Painel";
-import { NOME_APP } from "./lib/marca";
+import Exercicios from "./pages/Exercicios";
+import Treino from "./pages/Treino";
+import Perfil from "./pages/Perfil";
 
 export default function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-950 text-white">
-      <Navbar />
-      <div className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/ranking" element={<Ranking />} />
-          <Route path="/calorias" element={<Calorias />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/painel" element={<Painel />} />
-        </Routes>
+    <MotionConfig reducedMotion="user">
+      <div className="flex min-h-dvh flex-col bg-ink-950 pb-20 text-white md:pb-0">
+        <Navbar />
+
+        <div className="flex-1">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18 }}
+            >
+              <Routes location={location}>
+                <Route path="/" element={<Home />} />
+                <Route path="/ranking" element={<Ranking />} />
+                <Route path="/calorias" element={<Calorias />} />
+                <Route path="/exercicios" element={<Exercicios />} />
+                <Route path="/treino" element={<Treino />} />
+                <Route path="/perfil" element={<Perfil />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/cadastro" element={<Cadastro />} />
+                <Route path="/painel" element={<Painel />} />
+              </Routes>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <Rodape />
+        <BottomNav />
       </div>
-      <footer className="border-t border-zinc-800 py-6 text-center text-sm text-zinc-500">
-        © 2026 {NOME_APP}. Todos os direitos reservados.
-      </footer>
-    </div>
+    </MotionConfig>
   );
 }

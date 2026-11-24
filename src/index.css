@@ -1,1 +1,84 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Barlow Condensed", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* PRETO: fundos */
+  --color-ink-950: #07080b;
+  --color-ink-900: #0c0f15;
+  --color-ink-850: #11151e;
+  --color-ink-800: #171c28;
+  --color-ink-700: #232a3b;
+
+  /* LARANJA: destaque e ações principais */
+  --color-brand-300: #ffb785;
+  --color-brand-400: #ff8a3d;
+  --color-brand-500: #ff6a13;
+  --color-brand-600: #e8570a;
+
+  /* AZUL: navegação, informação e itens secundários */
+  --color-azul-300: #7cc0ff;
+  --color-azul-400: #4aa3ff;
+  --color-azul-500: #1d84f5;
+  --color-azul-600: #1668d1;
+
+  /* VERDE: evolução, sucesso e conquistas */
+  --color-ok-400: #34d399;
+  --color-ok-500: #10b981;
+
+  /* LEGADO: faz as telas antigas usarem as cores novas até a Fase 3 */
+  --color-lime-300: #ff8a3d;
+  --color-lime-400: #ff6a13;
+  --color-lime-500: #e8570a;
+  --color-zinc-950: #07080b;
+  --color-zinc-900: #0e1118;
+  --color-zinc-800: #1a2030;
+  --color-zinc-700: #2a3246;
+  --color-zinc-600: #3b455c;
+  --color-zinc-500: #7a859e;
+  --color-zinc-400: #98a2b8;
+  --color-zinc-300: #c3cada;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-ink-950 text-white antialiased;
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+  ::selection {
+    background: rgb(255 106 19 / 0.4);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-azul-400);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-500/25 transition hover:bg-brand-400 active:scale-[0.97] disabled:opacity-60;
+  }
+  .btn-ghost {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 active:scale-[0.97];
+  }
+  .btn-sm {
+    @apply min-h-10 px-4 py-2;
+  }
+  .cartao {
+    @apply rounded-2xl border border-white/10 bg-ink-850/80 shadow-xl shadow-black/30 backdrop-blur;
+  }
+}
+
+.fundo-grade {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
