@@ -49,7 +49,7 @@ export default function Cadastro() {
 
     if (error) return setErro(traduzirErro(error.message));
 
-    if (data.session) navigate("/painel"); // confirmação de e-mail desativada
+    if (data.session) navigate("/boas-vindas"); // confirmação de e-mail desativada
     else setSucesso(true); // precisa confirmar o e-mail
   }
 

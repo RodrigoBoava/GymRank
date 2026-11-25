@@ -1,10 +1,15 @@
-import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { useCallback, useMemo, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { Eye, Search } from "lucide-react";
 import { GRUPOS, contarExercicios, normalizar } from "../data/exercicios";
+import DetalheExercicio from "./DetalheExercicio";
 
 export default function SeletorExercicios({ renderAcao }) {
   const [grupoId, setGrupoId] = useState(GRUPOS[0].id);
   const [busca, setBusca] = useState("");
+  const [aberto, setAberto] = useState(null);
+
+  const fechar = useCallback(() => setAberto(null), []);
 
   const termo = normalizar(busca.trim());
   const buscando = termo.length >= 2;
@@ -28,17 +33,17 @@ export default function SeletorExercicios({ renderAcao }) {
   return (
     <div>
       <div className="relative">
-        <Search className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-zinc-500" />
+        <Search className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-zinc-500" />
         <input
           type="search"
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
           placeholder="Buscar exercício (ex.: supino, agachamento)"
-          className="w-full rounded-xl border border-zinc-800 bg-zinc-900 py-3 pl-10 pr-4 text-white placeholder-zinc-600 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30"
+          className="min-h-12 w-full rounded-xl border border-white/10 bg-ink-900 py-3 pl-11 pr-4 text-base text-white placeholder-zinc-500 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30"
         />
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="-mx-4 mt-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
         {GRUPOS.map((g) => {
           const ativo = !buscando && g.id === grupoId;
           return (
@@ -48,10 +53,10 @@ export default function SeletorExercicios({ renderAcao }) {
                 setGrupoId(g.id);
                 setBusca("");
               }}
-              className={`rounded-full border px-4 py-1.5 text-sm font-semibold transition ${
+              className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${
                 ativo
-                  ? "border-lime-400 bg-lime-400 text-zinc-950"
-                  : "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-600"
+                  ? "border-brand-500 bg-brand-500 text-white"
+                  : "border-white/10 bg-ink-900 text-zinc-300 hover:border-white/25"
               }`}
             >
               {g.nome} <span className="opacity-60">{contarExercicios(g)}</span>
@@ -61,28 +66,39 @@ export default function SeletorExercicios({ renderAcao }) {
       </div>
 
       <div className="mt-6 space-y-6">
-        {buscando && blocos.length === 0 && (
-          <p className="text-sm text-zinc-500">Nenhum exercício encontrado.</p>
-        )}
+        {buscando && blocos.length === 0 && <p className="text-sm text-zinc-500">Nenhum exercício encontrado.</p>}
 
         {blocos.map(({ grupo, subgrupo, exercicios }) => (
           <section key={`${grupo.id}-${subgrupo.id}`}>
-            <h3 className="mb-2 flex flex-wrap items-baseline gap-2 text-sm font-semibold uppercase tracking-wide text-lime-400">
+            <h3 className="mb-2 flex flex-wrap items-baseline gap-2 text-sm font-bold uppercase tracking-wide text-brand-400">
               {buscando && <span className="normal-case text-zinc-500">{grupo.nome} ·</span>}
               {subgrupo.nome}
               <span className="text-xs font-normal text-zinc-500">({exercicios.length})</span>
             </h3>
-            <ul className="divide-y divide-zinc-800 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
+            <ul className="divide-y divide-white/5 overflow-hidden rounded-xl border border-white/10 bg-ink-850/60">
               {exercicios.map((nome) => (
-                <li key={nome} className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm">
-                  <span>{nome}</span>
-                  {renderAcao?.(grupo, nome)}
+                <li key={nome} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 py-3 text-sm">
+                  <span className="min-w-0 flex-1 basis-44 font-medium">{nome}</span>
+                  <div className="flex shrink-0 items-center gap-2">
+                    <button
+                      onClick={() => setAberto({ nome, grupo: grupo.nome, subgrupo: subgrupo.nome })}
+                      aria-label={`Ver como executar: ${nome}`}
+                      className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-azul-400/40 bg-azul-500/10 px-3 py-1.5 text-xs font-bold text-azul-300 transition hover:bg-azul-500/20"
+                    >
+                      <Eye className="size-4" /> Como fazer
+                    </button>
+                    {renderAcao?.(grupo, nome)}
+                  </div>
                 </li>
               ))}
             </ul>
           </section>
         ))}
       </div>
+
+      <AnimatePresence>
+        {aberto && <DetalheExercicio exercicio={aberto} onFechar={fechar} />}
+      </AnimatePresence>
     </div>
   );
 }
