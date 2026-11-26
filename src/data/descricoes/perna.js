@@ -1,0 +1,1337 @@
+const AGACHAR = "Inspire ao descer, mantenha o abdômen firme e expire durante a subida.";
+const EMPURRAR = "Inspire antes de iniciar, expire ao empurrar e inspire novamente ao retornar.";
+
+export const DESCRICOES_PERNA = {
+  /* ───────── QUADRÍCEPS ───────── */
+  "Agachamento livre com barra": {
+    equipamento: "Barra e rack de agachamento",
+    posicao: "Apoie a barra na parte alta das costas, sobre o trapézio, com as mãos firmes e os cotovelos apontando para baixo. Afaste os pés na largura dos ombros, com as pontas levemente para fora, e dê um passo para trás para sair do suporte.",
+    execucao: [
+      "Inspire, contraia o abdômen e comece a descer levando o quadril para trás e para baixo, com os joelhos acompanhando a direção dos pés.",
+      "Desça até a coxa ficar paralela ao chão, ou até onde conseguir manter a coluna neutra e os calcanhares apoiados.",
+      "Empurre o chão com o pé inteiro e suba mantendo o tronco firme, até estender quadris e joelhos.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa", "Eretores da espinha e abdômen (estabilização)"],
+    erros: [
+      "Deixar os joelhos caírem para dentro durante a subida",
+      "Arredondar a lombar no ponto mais baixo",
+      "Tirar os calcanhares do chão ou deixar o tronco cair para a frente",
+    ],
+    dicas: [
+      "Faça um aquecimento progressivo antes das séries pesadas e ajuste as travas de segurança do rack.",
+      "Se a mobilidade do tornozelo limitar a profundidade, use um calçado de solado firme ou eleve levemente os calcanhares.",
+    ],
+  },
+  "Agachamento frontal": {
+    equipamento: "Barra e rack de agachamento",
+    posicao: "Apoie a barra na frente dos ombros, sobre o deltoide anterior, com os cotovelos altos e à frente. Segure com os dedos por baixo da barra (ou cruze os braços) e afaste os pés na largura dos ombros.",
+    execucao: [
+      "Inspire e contraia o abdômen, mantendo os cotovelos altos e o tronco o mais ereto possível.",
+      "Desça flexionando joelhos e quadril ao mesmo tempo, até a coxa ficar paralela ao chão ou um pouco abaixo.",
+      "Empurre o chão com o pé inteiro para subir, sem deixar os cotovelos caírem.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps"],
+    secundarios: ["Glúteo máximo", "Abdômen e eretores da espinha (estabilização)", "Parte alta das costas"],
+    erros: [
+      "Deixar os cotovelos caírem e a barra rolar para a frente",
+      "Inclinar o tronco para a frente ao subir",
+      "Descer com os calcanhares fora do chão",
+    ],
+    dicas: [
+      "A posição exige boa mobilidade de punhos, ombros e tornozelos; comece com carga leve.",
+      "Como o tronco fica mais vertical, a carga costuma ser menor que no agachamento livre com barra nas costas.",
+    ],
+  },
+  "Agachamento no Smith": {
+    equipamento: "Smith machine",
+    posicao: "Apoie a barra na parte alta das costas e coloque os pés um pouco à frente da linha da barra, na largura dos ombros. Gire os punhos para destravar a barra.",
+    execucao: [
+      "Inspire, contraia o abdômen e desça flexionando joelhos e quadril, com as costas firmes.",
+      "Desça até a coxa ficar paralela ao chão, ou até onde o conforto das articulações permitir.",
+      "Empurre o chão com o pé inteiro até estender as pernas e, ao final da série, trave a barra nos ganchos.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa"],
+    erros: [
+      "Posicionar os pés diretamente sob a barra, forçando joelhos e lombar",
+      "Esquecer de travar a barra nos ganchos ao final da série",
+      "Deixar os joelhos caírem para dentro",
+    ],
+    dicas: [
+      "Como a trajetória é fixa, teste a posição dos pés com carga leve até o movimento ficar confortável.",
+      "Regule as travas de segurança na altura do ponto mais baixo do movimento.",
+    ],
+  },
+  "Agachamento hack": {
+    equipamento: "Máquina hack",
+    posicao: "Posicione as costas e os ombros nas almofadas, com os pés apoiados na plataforma na largura dos ombros e as pontas levemente para fora. Destrave a máquina e estenda as pernas sem travar os joelhos.",
+    execucao: [
+      "Inspire e desça de forma controlada, flexionando os joelhos, com as costas sempre apoiadas no encosto.",
+      "Desça até as coxas ficarem paralelas à plataforma, ou até onde o conforto das articulações permitir.",
+      "Empurre a plataforma com o pé inteiro até quase estender as pernas.",
+    ],
+    respiracao: EMPURRAR,
+    principais: ["Quadríceps"],
+    secundarios: ["Glúteo máximo", "Adutores"],
+    erros: [
+      "Tirar o quadril do encosto na parte mais baixa",
+      "Deixar os joelhos caírem para dentro",
+      "Fazer repetições curtas, sem usar a amplitude disponível",
+    ],
+    dicas: [
+      "Em geral, pés mais baixos na plataforma aumentam a exigência do quadríceps; pés mais altos deslocam mais carga para os glúteos.",
+      "Destrave e trave a máquina com cuidado nas primeiras e últimas repetições.",
+    ],
+  },
+  "Agachamento pêndulo": {
+    equipamento: "Máquina de agachamento pêndulo",
+    posicao: "Posicione os ombros sob as almofadas e os pés na plataforma, na largura dos ombros. Segure as alças, mantenha o tronco firme e destrave a máquina.",
+    execucao: [
+      "Inspire e desça de forma controlada, deixando a máquina acompanhar o arco do movimento.",
+      "Flexione os joelhos até uma profundidade confortável, mantendo os calcanhares apoiados.",
+      "Empurre a plataforma com o pé inteiro e estenda as pernas sem travar os joelhos.",
+    ],
+    respiracao: EMPURRAR,
+    principais: ["Quadríceps"],
+    secundarios: ["Glúteo máximo", "Adutores"],
+    erros: [
+      "Levantar os calcanhares na parte mais baixa",
+      "Soltar o peso na descida em vez de controlá-lo",
+      "Usar uma carga que impede a amplitude completa",
+    ],
+    dicas: [
+      "A trajetória em arco permite flexionar bastante os joelhos; aumente a profundidade aos poucos.",
+      "Controle a fase de descida, que é onde o quadríceps trabalha sob alongamento.",
+    ],
+  },
+  "Agachamento no cinto (belt squat)": {
+    equipamento: "Máquina de belt squat (ou cinto com carga e duas plataformas)",
+    posicao: "Prenda o cinto no quadril, com a carga pendurada entre os pés, e fique em pé sobre as plataformas, com os pés na largura dos ombros e o tronco ereto.",
+    execucao: [
+      "Inspire e desça flexionando os joelhos e levando o quadril para baixo, mantendo o tronco vertical.",
+      "Desça até a profundidade que mantenha a coluna neutra e os calcanhares apoiados.",
+      "Empurre o chão e estenda quadris e joelhos para subir.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa"],
+    erros: [
+      "Inclinar o tronco para a frente",
+      "Deixar a carga balançar",
+      "Deixar os joelhos caírem para dentro",
+    ],
+    dicas: [
+      "Como a carga fica presa ao quadril, a coluna não recebe peso sobre os ombros; é uma boa opção quando as costas precisam de alívio.",
+      "Apoie as mãos nas alças apenas para equilíbrio, sem puxar.",
+    ],
+  },
+  "Agachamento goblet": {
+    equipamento: "Halter ou kettlebell",
+    posicao: "Segure o halter (ou kettlebell) junto ao peito, com as duas mãos, e os cotovelos apontando para baixo. Afaste os pés um pouco além da largura dos ombros, com as pontas levemente para fora.",
+    execucao: [
+      "Inspire, contraia o abdômen e desça levando o quadril para baixo e para trás, mantendo o tronco ereto.",
+      "Desça até os cotovelos passarem entre os joelhos, ou até a coxa ficar paralela ao chão.",
+      "Empurre o chão e suba, mantendo o peso junto ao peito.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Abdômen", "Parte alta das costas (estabilização)"],
+    erros: [
+      "Deixar o peso se afastar do peito",
+      "Arredondar as costas no ponto mais baixo",
+      "Deixar os joelhos caírem para dentro",
+    ],
+    dicas: [
+      "Os cotovelos entre os joelhos ajudam a manter a posição e a profundidade.",
+      "É uma ótima opção para aprender o padrão do agachamento.",
+    ],
+  },
+  "Agachamento búlgaro": {
+    equipamento: "Banco e halteres (ou barra)",
+    posicao: "De costas para um banco, apoie o peito do pé de trás sobre ele. Posicione o pé da frente cerca de um passo e meio à frente do banco, com o tronco ereto e os halteres ao lado do corpo.",
+    execucao: [
+      "Inspire e desça flexionando o joelho da frente, mantendo o tronco ereto e o peso sobre o pé inteiro.",
+      "Desça até a coxa da frente ficar paralela ao chão, deixando o joelho de trás se aproximar do chão.",
+      "Empurre o pé da frente contra o chão para subir, sem apoiar o peso na perna de trás.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Posicionar o pé da frente perto demais do banco",
+      "Deixar o joelho da frente cair para dentro",
+      "Usar a perna de trás para se impulsionar",
+    ],
+    dicas: [
+      "Ajuste a distância do pé da frente com carga leve até encontrar a posição confortável.",
+      "Inclinar levemente o tronco para a frente desloca mais trabalho para os glúteos.",
+    ],
+  },
+  "Agachamento sissy": {
+    equipamento: "Peso corporal e um apoio para as mãos (ou máquina de sissy)",
+    posicao: "Em pé, segure em um apoio firme com uma das mãos, com os pés na largura dos quadris. Eleve os calcanhares, apoiando o corpo nas pontas dos pés.",
+    execucao: [
+      "Inspire e flexione os joelhos, levando-os para a frente enquanto inclina o tronco para trás, mantendo o corpo em uma linha dos joelhos aos ombros.",
+      "Desça até sentir um forte alongamento na frente das coxas, sem perder o controle.",
+      "Contraia o quadríceps e estenda os joelhos para voltar à posição inicial.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir.",
+    principais: ["Quadríceps (principalmente o reto femoral)"],
+    secundarios: ["Abdômen (estabilização)", "Panturrilha"],
+    erros: [
+      "Dobrar o quadril em vez de manter o corpo em linha reta",
+      "Descer além do que o joelho tolera",
+      "Fazer o movimento rápido, sem controle",
+    ],
+    dicas: [
+      "É um exercício que exige bastante dos joelhos: comece com amplitude pequena e evite se houver dor.",
+      "Use o apoio das mãos para controlar o equilíbrio, sem puxar o corpo para cima.",
+    ],
+  },
+  "Agachamento unilateral (pistol)": {
+    equipamento: "Peso corporal",
+    posicao: "Em pé, apoie o peso sobre uma perna e estenda a outra à frente, levantada do chão. Mantenha os braços à frente para ajudar no equilíbrio.",
+    execucao: [
+      "Inspire e desça lentamente flexionando o joelho da perna de apoio, com o pé inteiro no chão.",
+      "Desça o máximo que conseguir mantendo o calcanhar no chão e a coluna neutra, mantendo a perna livre estendida à frente.",
+      "Empurre o chão com o pé de apoio para voltar à posição inicial.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Abdômen", "Músculos estabilizadores do tornozelo"],
+    erros: [
+      "Levantar o calcanhar de apoio",
+      "Deixar o joelho cair para dentro",
+      "Cair no ponto mais baixo em vez de controlar a descida",
+    ],
+    dicas: [
+      "Comece com uma caixa ou banco atrás de você, para limitar a profundidade, ou segure em um apoio (TRX, por exemplo).",
+      "Aumente a profundidade aos poucos conforme ganhar força e mobilidade.",
+    ],
+  },
+  "Agachamento com salto": {
+    equipamento: "Peso corporal",
+    posicao: "Em pé, com os pés na largura dos ombros e os braços à frente do corpo ou junto ao peito. Escolha uma superfície firme e antiderrapante.",
+    execucao: [
+      "Desça rapidamente em um agachamento parcial, levando o quadril para trás.",
+      "Impulsione o corpo para cima com força, estendendo quadris, joelhos e tornozelos para saltar.",
+      "Aterrisse suavemente, com os joelhos flexionados, e passe direto para a próxima repetição.",
+    ],
+    respiracao: "Inspire ao descer e expire no impulso do salto.",
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Panturrilha", "Posterior de coxa", "Abdômen"],
+    erros: [
+      "Aterrissar com os joelhos estendidos e travados",
+      "Deixar os joelhos caírem para dentro na aterrissagem",
+      "Continuar o exercício com muita fadiga, perdendo a técnica",
+    ],
+    dicas: [
+      "Faça poucas repetições de boa qualidade: é um exercício explosivo.",
+      "Procure aterrissar de forma silenciosa, amortecendo o impacto com quadris e joelhos.",
+    ],
+  },
+  "Leg press 45°": {
+    equipamento: "Máquina de leg press 45°",
+    posicao: "Sente na máquina com as costas e o quadril firmes no encosto. Apoie os pés na plataforma na largura dos ombros e destrave o equipamento, estendendo as pernas sem travar os joelhos.",
+    execucao: [
+      "Inspire e desça a plataforma de forma controlada, flexionando os joelhos em direção ao peito.",
+      "Desça até cerca de 90° de flexão dos joelhos, ou até o ponto em que o quadril começaria a se descolar do encosto.",
+      "Empurre a plataforma com o pé inteiro até quase estender as pernas, sem travar os joelhos.",
+    ],
+    respiracao: EMPURRAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa"],
+    erros: [
+      "Deixar o quadril se descolar do encosto e a lombar arredondar",
+      "Travar os joelhos no final",
+      "Colocar as mãos nas coxas e empurrar com os braços",
+    ],
+    dicas: [
+      "Pés mais baixos na plataforma aumentam a exigência dos joelhos e do quadríceps; pés mais altos recrutam mais os glúteos.",
+      "Segure nas alças laterais para manter o corpo estável.",
+    ],
+  },
+  "Leg press horizontal": {
+    equipamento: "Máquina de leg press horizontal",
+    posicao: "Sente com as costas e a cabeça apoiadas no encosto. Posicione os pés na plataforma na largura dos ombros, com as pontas levemente para fora, e segure nas alças.",
+    execucao: [
+      "Empurre a plataforma até estender quase totalmente as pernas, sem travar os joelhos.",
+      "Retorne devagar, flexionando os joelhos até cerca de 90°, mantendo as costas apoiadas.",
+      "Empurre de novo com o pé inteiro, sem tirar o quadril do assento.",
+    ],
+    respiracao: "Expire ao empurrar e inspire ao retornar.",
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa"],
+    erros: [
+      "Tirar o quadril do assento ao flexionar",
+      "Travar os joelhos ao estender",
+      "Deixar os joelhos caírem para dentro",
+    ],
+    dicas: [
+      "Ajuste o assento de modo que os joelhos fiquem confortáveis na posição inicial.",
+      "Mantenha a mesma velocidade na ida e na volta.",
+    ],
+  },
+  "Leg press unilateral": {
+    equipamento: "Máquina de leg press",
+    posicao: "Sente na máquina com as costas apoiadas e coloque apenas um pé no centro da plataforma. Mantenha o outro pé fora da plataforma, sem apoiar peso.",
+    execucao: [
+      "Inspire e desça a plataforma de forma controlada, flexionando o joelho da perna de trabalho.",
+      "Desça até cerca de 90° de flexão, sem deixar o quadril se descolar do assento ou girar.",
+      "Empurre a plataforma com o pé inteiro até quase estender a perna, sem travar o joelho.",
+    ],
+    respiracao: EMPURRAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa"],
+    erros: [
+      "Deixar o quadril girar ou levantar do lado trabalhado",
+      "Deixar o joelho cair para dentro",
+      "Usar a carga de duas pernas em uma só",
+    ],
+    dicas: [
+      "Use uma carga bem menor que a do exercício com as duas pernas.",
+      "Trabalhe as duas pernas com o mesmo número de repetições para equilibrar a força dos lados.",
+    ],
+  },
+  "Cadeira extensora": {
+    equipamento: "Cadeira extensora",
+    posicao: "Sente com as costas apoiadas no encosto e ajuste-o para que os joelhos fiquem alinhados com o eixo da máquina. Posicione o rolo sobre a parte baixa das canelas, perto dos tornozelos.",
+    execucao: [
+      "Estenda os joelhos de forma controlada até que as pernas fiquem quase retas.",
+      "Contraia o quadríceps por um instante no topo, sem travar os joelhos.",
+      "Retorne devagar, controlando a descida do peso, sem deixar a carga bater.",
+    ],
+    respiracao: "Expire ao estender os joelhos e inspire ao retornar.",
+    principais: ["Quadríceps"],
+    secundarios: ["Tibial anterior (estabilização do tornozelo)"],
+    erros: [
+      "Balançar o tronco ou levantar o quadril para ganhar impulso",
+      "Jogar a carga para cima, sem controle",
+      "Travar os joelhos com força no topo",
+    ],
+    dicas: [
+      "Ajuste bem o encosto e o rolo antes de começar: um ajuste ruim sobrecarrega os joelhos.",
+      "Use cargas moderadas e foque em controlar a descida.",
+    ],
+  },
+  "Cadeira extensora unilateral": {
+    equipamento: "Cadeira extensora",
+    posicao: "Sente com as costas apoiadas e ajuste o encosto e o rolo como no exercício com as duas pernas. Posicione o rolo sobre a canela de uma das pernas, deixando a outra relaxada.",
+    execucao: [
+      "Estenda o joelho de forma controlada até que a perna fique quase reta.",
+      "Contraia o quadríceps no topo, sem travar a articulação.",
+      "Retorne devagar, controlando o peso, e repita antes de trocar de perna.",
+    ],
+    respiracao: "Expire ao estender o joelho e inspire ao retornar.",
+    principais: ["Quadríceps"],
+    secundarios: ["Tibial anterior (estabilização do tornozelo)"],
+    erros: [
+      "Inclinar o tronco ou girar o quadril para ajudar a subir",
+      "Usar a carga de duas pernas em uma só",
+      "Travar o joelho no topo",
+    ],
+    dicas: [
+      "Usar uma perna por vez ajuda a perceber e corrigir diferenças de força entre os lados.",
+      "Comece pelo lado mais fraco e iguale as repetições do outro lado.",
+    ],
+  },
+  "Afundo (passada estacionária)": {
+    equipamento: "Peso corporal, halteres ou barra",
+    posicao: "Em pé, dê um passo à frente e fique com um pé à frente e o outro atrás, com o calcanhar de trás elevado. Mantenha o tronco ereto e os pés na largura dos quadris.",
+    execucao: [
+      "Inspire e desça flexionando os dois joelhos, mantendo o tronco ereto e o movimento na vertical.",
+      "Desça até o joelho de trás ficar perto do chão e o da frente próximo de 90°.",
+      "Empurre o pé da frente contra o chão para subir, sem sair da posição.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Dar um passo curto demais, sobrecarregando o joelho da frente",
+      "Inclinar o tronco para a frente ou deixá-lo girar",
+      "Deixar o joelho da frente cair para dentro",
+    ],
+    dicas: [
+      "Mantenha o peso no pé da frente, empurrando com o pé inteiro.",
+      "Segure em um apoio se tiver dificuldade de equilíbrio.",
+    ],
+  },
+  "Avanço (passada andando)": {
+    equipamento: "Peso corporal ou halteres",
+    posicao: "Em pé, com o tronco ereto e os pés na largura dos quadris. Se usar halteres, segure-os ao lado do corpo. Tenha um espaço livre à frente.",
+    execucao: [
+      "Dê um passo largo à frente e desça flexionando os dois joelhos, mantendo o tronco ereto.",
+      "Desça até o joelho de trás ficar perto do chão, com o joelho da frente em cerca de 90°.",
+      "Empurre o pé da frente contra o chão e leve a perna de trás à frente para dar o passo seguinte.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir e avançar.",
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Dar passos curtos ou de tamanhos diferentes",
+      "Deixar o joelho da frente cair para dentro",
+      "Inclinar o tronco para a frente",
+    ],
+    dicas: [
+      "Mantenha o mesmo tamanho de passo em todas as repetições.",
+      "Olhe para a frente e mantenha o abdômen firme para controlar o equilíbrio.",
+    ],
+  },
+  "Avanço reverso": {
+    equipamento: "Peso corporal ou halteres",
+    posicao: "Em pé, com o tronco ereto e os pés na largura dos quadris. Se usar halteres, segure-os ao lado do corpo.",
+    execucao: [
+      "Dê um passo largo para trás e desça flexionando os dois joelhos, mantendo o tronco ereto.",
+      "Desça até o joelho de trás ficar perto do chão, com o joelho da frente em cerca de 90°.",
+      "Empurre o pé da frente contra o chão para subir e traga a perna de trás de volta ao lado da outra.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Dar um passo curto demais para trás",
+      "Perder o equilíbrio e inclinar o tronco",
+      "Deixar o joelho da frente cair para dentro",
+    ],
+    dicas: [
+      "Como o peso fica sobre a perna da frente o tempo todo, muita gente sente mais conforto nos joelhos do que no avanço para a frente.",
+      "Mantenha o peso no pé da frente e empurre com o pé inteiro.",
+    ],
+  },
+  "Avanço no Smith": {
+    equipamento: "Smith machine",
+    posicao: "Apoie a barra nas costas e posicione o pé da frente à frente da linha da barra, com o outro pé atrás, calcanhar elevado. Gire os punhos para destravar.",
+    execucao: [
+      "Inspire e desça flexionando os dois joelhos na vertical, com o tronco ereto.",
+      "Desça até o joelho de trás ficar perto do chão e o da frente em cerca de 90°.",
+      "Empurre o pé da frente contra o chão para subir, e ao fim da série trave a barra nos ganchos.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Adutores", "Posterior de coxa"],
+    erros: [
+      "Posicionar o pé da frente muito perto da barra",
+      "Deixar o joelho da frente cair para dentro",
+      "Esquecer de travar a barra no fim da série",
+    ],
+    dicas: [
+      "A barra guiada ajuda no equilíbrio, então foque em manter o movimento na vertical.",
+      "Troque a perna da frente e faça o mesmo número de repetições nos dois lados.",
+    ],
+  },
+  "Subida no banco (step-up)": {
+    equipamento: "Banco ou caixa, e halteres (opcional)",
+    posicao: "Fique em pé de frente para um banco de altura que deixe o joelho em cerca de 90° quando o pé estiver sobre ele. Apoie um pé inteiro sobre o banco, com o tronco ereto.",
+    execucao: [
+      "Empurre o pé apoiado no banco contra a superfície e suba, estendendo quadril e joelho.",
+      "No topo, fique em pé sobre o banco, com o quadril estendido e o corpo alinhado.",
+      "Desça devagar, controlando o movimento com a perna que está sobre o banco.",
+    ],
+    respiracao: "Expire ao subir e inspire ao descer.",
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Panturrilha", "Abdômen (estabilização)"],
+    erros: [
+      "Impulsionar-se com a perna que está no chão",
+      "Usar um banco alto demais, que faz o quadril arredondar",
+      "Deixar o joelho da frente cair para dentro",
+    ],
+    dicas: [
+      "Faça toda a subida com a perna do banco e use a outra apenas para equilíbrio.",
+      "Comece com um banco mais baixo e aumente a altura conforme ganhar força.",
+    ],
+  },
+
+  /* ───────── POSTERIOR DE COXA ───────── */
+  "Mesa flexora": {
+    equipamento: "Mesa flexora",
+    posicao: "Deite de bruços na máquina, com os joelhos alinhados à borda do banco e o rolo posicionado na parte de trás dos tornozelos. Segure nas alças e mantenha o quadril apoiado no banco.",
+    execucao: [
+      "Flexione os joelhos de forma controlada, aproximando os calcanhares dos glúteos.",
+      "Contraia o posterior de coxa por um instante no ponto mais alto, sem levantar o quadril.",
+      "Retorne devagar até quase estender as pernas, controlando a descida do peso.",
+    ],
+    respiracao: "Expire ao flexionar os joelhos e inspire ao retornar.",
+    principais: ["Posterior de coxa (bíceps femoral, semitendíneo e semimembranáceo)"],
+    secundarios: ["Panturrilha (gastrocnêmio)", "Glúteos"],
+    erros: [
+      "Levantar o quadril do banco para ganhar impulso",
+      "Fazer o movimento rápido, deixando o peso bater na volta",
+      "Usar uma carga que impede de completar a amplitude",
+    ],
+    dicas: [
+      "Ajuste o banco e o rolo antes de começar para que o eixo da máquina fique alinhado ao joelho.",
+      "Pressione o quadril contra o banco durante toda a série.",
+    ],
+  },
+  "Cadeira flexora": {
+    equipamento: "Cadeira flexora",
+    posicao: "Sente com as costas apoiadas e ajuste o apoio das coxas. Posicione o rolo na parte de trás dos tornozelos, com as pernas estendidas e os joelhos alinhados ao eixo da máquina.",
+    execucao: [
+      "Flexione os joelhos, puxando o rolo para baixo e para trás, de forma controlada.",
+      "Contraia o posterior de coxa no ponto de maior flexão, mantendo as coxas firmes no apoio.",
+      "Retorne devagar, estendendo as pernas até quase a posição inicial.",
+    ],
+    respiracao: "Expire ao flexionar os joelhos e inspire ao retornar.",
+    principais: ["Posterior de coxa (bíceps femoral, semitendíneo e semimembranáceo)"],
+    secundarios: ["Panturrilha (gastrocnêmio)"],
+    erros: [
+      "Levantar as coxas do apoio ou inclinar o tronco para ajudar",
+      "Usar impulso para iniciar a flexão",
+      "Soltar o peso na volta",
+    ],
+    dicas: [
+      "Com a posição sentada, o posterior de coxa trabalha com o quadril flexionado, o que costuma ser uma posição de maior alongamento do músculo.",
+      "Mantenha a velocidade controlada nas duas fases do movimento.",
+    ],
+  },
+  "Flexora em pé (unilateral)": {
+    equipamento: "Máquina flexora em pé",
+    posicao: "Em pé de frente para a máquina, apoie o corpo nas alças e posicione o rolo na parte de trás do tornozelo de uma das pernas. A outra perna fica apoiada no chão, com o joelho levemente flexionado.",
+    execucao: [
+      "Flexione o joelho da perna de trabalho, levando o calcanhar em direção ao glúteo.",
+      "Contraia o posterior de coxa no topo, mantendo o quadril parado.",
+      "Retorne devagar até quase estender a perna, controlando o peso.",
+    ],
+    respiracao: "Expire ao flexionar o joelho e inspire ao retornar.",
+    principais: ["Posterior de coxa (bíceps femoral, semitendíneo e semimembranáceo)"],
+    secundarios: ["Panturrilha (gastrocnêmio)", "Glúteos e abdômen (estabilização)"],
+    erros: [
+      "Inclinar o tronco ou rodar o quadril para ajudar",
+      "Fazer o movimento rápido, sem controle",
+      "Usar a carga de duas pernas em uma só",
+    ],
+    dicas: [
+      "Mantenha o quadril nivelado e a coluna reta durante todo o movimento.",
+      "Faça o mesmo número de repetições nas duas pernas.",
+    ],
+  },
+  "Flexora com bola suíça": {
+    equipamento: "Bola suíça",
+    posicao: "Deite de costas no chão, com os braços ao lado do corpo e os calcanhares apoiados sobre a bola, pernas estendidas. Eleve o quadril até alinhar ombros, quadril e joelhos.",
+    execucao: [
+      "Mantendo o quadril alto, flexione os joelhos e puxe a bola em direção aos glúteos.",
+      "Contraia o posterior de coxa e os glúteos ao final do movimento.",
+      "Estenda as pernas devagar, devolvendo a bola, sem deixar o quadril cair.",
+    ],
+    respiracao: "Expire ao puxar a bola e inspire ao estendê-la.",
+    principais: ["Posterior de coxa (bíceps femoral, semitendíneo e semimembranáceo)"],
+    secundarios: ["Glúteos", "Abdômen e eretores da espinha (estabilização)"],
+    erros: [
+      "Deixar o quadril cair durante o movimento",
+      "Fazer o movimento rápido, sem controle da bola",
+      "Arquear a lombar ao elevar o quadril",
+    ],
+    dicas: [
+      "Mantenha o abdômen e os glúteos contraídos para o corpo ficar em uma linha única.",
+      "Se estiver difícil, comece sem elevar tanto o quadril ou com apoio dos braços no chão.",
+    ],
+  },
+  "Flexora deslizante": {
+    equipamento: "Sliders ou uma toalha sobre piso liso",
+    posicao: "Deite de costas, com os calcanhares sobre os sliders (ou toalha) e os joelhos flexionados. Eleve o quadril, formando uma linha dos ombros aos joelhos.",
+    execucao: [
+      "Estenda as pernas devagar, deslizando os calcanhares para longe, mantendo o quadril alto.",
+      "Pare quando estiver quase com as pernas estendidas, sem perder a posição do quadril.",
+      "Puxe os calcanhares de volta com o posterior de coxa até a posição inicial.",
+    ],
+    respiracao: "Inspire ao estender as pernas e expire ao puxar os calcanhares.",
+    principais: ["Posterior de coxa (bíceps femoral, semitendíneo e semimembranáceo)"],
+    secundarios: ["Glúteos", "Abdômen (estabilização)"],
+    erros: [
+      "Deixar o quadril cair ao estender as pernas",
+      "Estender rápido demais e perder o controle",
+      "Usar os braços no chão para se impulsionar",
+    ],
+    dicas: [
+      "Faça a fase de extensão (a ida) bem devagar: é nela que o posterior de coxa trabalha em alongamento.",
+      "Reduza a amplitude se ainda não conseguir controlar o movimento.",
+    ],
+  },
+  "Flexão nórdica (nordic curl)": {
+    equipamento: "Apoio para prender os tornozelos (parceiro, barra ou máquina) e um tapete",
+    posicao: "Ajoelhe sobre um tapete com o tronco ereto e os tornozelos presos. Mantenha o corpo reto dos joelhos à cabeça e os braços à frente do peito.",
+    execucao: [
+      "Incline o corpo para a frente de forma lenta, mantendo-o reto dos joelhos à cabeça e controlando a descida com o posterior de coxa.",
+      "Quando não conseguir mais segurar, amorteça a queda apoiando as mãos no chão.",
+      "Empurre o chão com as mãos e use o posterior de coxa para voltar à posição ajoelhada.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir.",
+    principais: ["Posterior de coxa (bíceps femoral, semitendíneo e semimembranáceo)"],
+    secundarios: ["Glúteos", "Panturrilha", "Abdômen (estabilização)"],
+    erros: [
+      "Dobrar o quadril em vez de manter o corpo reto",
+      "Cair sem controle desde o início",
+      "Prender os tornozelos de forma instável",
+    ],
+    dicas: [
+      "É um exercício intenso: comece com poucas repetições e use as mãos para ajudar na subida.",
+      "Uma faixa elástica de assistência ajuda a progredir de forma segura.",
+    ],
+  },
+  "Glute-ham raise (GHD)": {
+    equipamento: "Banco GHD (glute-ham developer)",
+    posicao: "Ajuste a plataforma para prender os pés e posicione as coxas sobre a almofada, com o quadril um pouco à frente do apoio. Comece com o corpo na vertical, com os joelhos levemente flexionados e os braços cruzados no peito.",
+    execucao: [
+      "Desça o tronco para a frente de forma lenta, mantendo o corpo reto, controlando com o posterior de coxa.",
+      "Desça até onde conseguir manter o controle, com o corpo próximo à horizontal.",
+      "Contraia posterior de coxa e glúteos para voltar à posição inicial, estendendo o quadril.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir.",
+    principais: ["Posterior de coxa", "Glúteo máximo"],
+    secundarios: ["Eretores da espinha", "Panturrilha"],
+    erros: [
+      "Hiperestender a lombar no topo",
+      "Dobrar o quadril para facilitar a subida",
+      "Descer sem controle",
+    ],
+    dicas: [
+      "Comece com peso corporal e amplitude reduzida, ajustando a plataforma conforme sua força.",
+      "Mantenha o corpo alinhado, sem arquear nem arredondar as costas.",
+    ],
+  },
+  "Stiff com barra": {
+    equipamento: "Barra",
+    posicao: "Em pé, segure a barra à frente das coxas com pegada pronada na largura dos ombros. Mantenha os joelhos quase estendidos, os ombros para trás e a coluna neutra.",
+    execucao: [
+      "Empurre o quadril para trás e incline o tronco, deslizando a barra rente às pernas.",
+      "Desça até sentir um forte alongamento no posterior de coxa, normalmente na altura do joelho ou um pouco abaixo, sem arredondar a coluna.",
+      "Contraia glúteos e posteriores e estenda o quadril para voltar à posição inicial.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir.",
+    principais: ["Posterior de coxa", "Glúteo máximo"],
+    secundarios: ["Eretores da espinha", "Antebraço (pegada)"],
+    erros: [
+      "Arredondar a coluna ao descer",
+      "Deixar a barra se afastar das pernas",
+      "Flexionar demais os joelhos, transformando o movimento em um agachamento",
+    ],
+    dicas: [
+      "O movimento é uma dobra do quadril: pense em levar o quadril para trás, não o tronco para baixo.",
+      "Desça somente até onde conseguir manter a coluna reta.",
+    ],
+  },
+  "Stiff com halteres": {
+    equipamento: "Halteres",
+    posicao: "Em pé, segure um haltere em cada mão à frente das coxas, com as palmas voltadas para o corpo. Mantenha os joelhos quase estendidos e a coluna neutra.",
+    execucao: [
+      "Empurre o quadril para trás e incline o tronco, deslizando os halteres rente às pernas.",
+      "Desça até sentir o alongamento do posterior de coxa, mantendo a coluna reta.",
+      "Estenda o quadril contraindo glúteos e posteriores para voltar à posição inicial.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir.",
+    principais: ["Posterior de coxa", "Glúteo máximo"],
+    secundarios: ["Eretores da espinha", "Antebraço (pegada)"],
+    erros: [
+      "Arredondar a coluna ao descer",
+      "Afastar os halteres do corpo",
+      "Usar os joelhos demais, agachando em vez de dobrar o quadril",
+    ],
+    dicas: [
+      "Os halteres permitem uma amplitude maior que a barra, pois podem passar ao lado das pernas.",
+      "Olhe para um ponto à frente no chão para manter o pescoço alinhado.",
+    ],
+  },
+  "Stiff unilateral": {
+    equipamento: "Halter ou kettlebell (opcional)",
+    posicao: "Em pé sobre uma perna, com o joelho levemente flexionado, e o halter (opcional) na mão oposta à perna de apoio. A outra perna fica atrás, com o pé fora do chão.",
+    execucao: [
+      "Incline o tronco para a frente, dobrando o quadril, enquanto a perna livre sobe para trás, em linha com o tronco.",
+      "Desça até o tronco ficar próximo da horizontal, mantendo o quadril nivelado e a coluna reta.",
+      "Contraia o glúteo e o posterior de coxa da perna de apoio para voltar à posição inicial.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir.",
+    principais: ["Posterior de coxa", "Glúteo máximo"],
+    secundarios: ["Glúteo médio", "Eretores da espinha", "Abdômen (estabilização)"],
+    erros: [
+      "Girar o quadril para o lado da perna que sobe",
+      "Arredondar a coluna",
+      "Trancar o joelho da perna de apoio",
+    ],
+    dicas: [
+      "Use um apoio com a mão livre se tiver dificuldade de equilíbrio.",
+      "Comece sem peso até dominar o movimento.",
+    ],
+  },
+  "Levantamento terra romeno": {
+    equipamento: "Barra",
+    posicao: "Em pé, com a barra nas mãos à frente das coxas (retirada do rack ou levantada do chão), pegada pronada na largura dos ombros. Mantenha os joelhos levemente flexionados e fixos durante todo o movimento.",
+    execucao: [
+      "Empurre o quadril para trás e deslize a barra rente às coxas, mantendo as costas retas.",
+      "Desça até a barra passar dos joelhos, em geral até o meio da canela, sem arredondar a coluna.",
+      "Empurre o quadril para a frente contraindo os glúteos para voltar à posição inicial.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir.",
+    principais: ["Glúteo máximo", "Posterior de coxa"],
+    secundarios: ["Eretores da espinha", "Antebraço (pegada)", "Trapézio"],
+    erros: [
+      "Deixar a barra se afastar do corpo",
+      "Arredondar a coluna para descer mais",
+      "Flexionar os joelhos a cada repetição",
+    ],
+    dicas: [
+      "Diferente do terra convencional, a barra não precisa tocar o chão entre as repetições.",
+      "Pense em empurrar o quadril para trás, como se fechasse uma porta com o glúteo.",
+    ],
+  },
+  "Levantamento terra convencional": {
+    equipamento: "Barra e anilhas",
+    posicao: "Posicione a barra sobre o meio dos pés, com os pés na largura dos quadris. Flexione quadril e joelhos e segure a barra com as mãos na largura dos ombros, fora dos joelhos, com a coluna neutra e os ombros à frente da barra.",
+    execucao: [
+      "Inspire, contraia o abdômen e puxe a folga da barra, mantendo os braços retos.",
+      "Empurre o chão com os pés, estendendo joelhos e quadril, com a barra subindo rente às pernas.",
+      "Termine em pé, com os glúteos contraídos, e desça a barra devagar pelo mesmo caminho.",
+    ],
+    respiracao: "Inspire e contraia o abdômen antes de puxar; expire ao final da subida ou após a repetição.",
+    principais: ["Glúteo máximo", "Posterior de coxa", "Eretores da espinha"],
+    secundarios: ["Quadríceps", "Trapézio e dorsais", "Antebraço (pegada)"],
+    erros: [
+      "Arredondar a lombar ao puxar",
+      "Deixar a barra se afastar das pernas",
+      "Puxar com os braços ou hiperestender as costas no topo",
+    ],
+    dicas: [
+      "Aprenda o movimento com carga leve e peça uma avaliação de técnica antes de aumentar o peso.",
+      "Use cinto e magnésio apenas quando a carga e a técnica justificarem.",
+    ],
+  },
+  "Levantamento terra sumô": {
+    equipamento: "Barra e anilhas",
+    posicao: "Afaste bem os pés, com as pontas voltadas para fora, e segure a barra com as mãos dentro das pernas, em pegada estreita. Mantenha o tronco mais ereto e a coluna neutra.",
+    execucao: [
+      "Inspire, contraia o abdômen e puxe a folga da barra, empurrando os joelhos para fora, na direção dos pés.",
+      "Empurre o chão com os pés, estendendo quadril e joelhos, com a barra subindo rente ao corpo.",
+      "Termine em pé, contraindo os glúteos, e desça a barra de forma controlada.",
+    ],
+    respiracao: "Inspire e contraia o abdômen antes de puxar; expire ao final da subida.",
+    principais: ["Glúteo máximo", "Adutores", "Quadríceps"],
+    secundarios: ["Posterior de coxa", "Eretores da espinha", "Trapézio"],
+    erros: [
+      "Deixar os joelhos caírem para dentro",
+      "Iniciar o movimento com o quadril alto demais",
+      "Deixar a barra se afastar do corpo",
+    ],
+    dicas: [
+      "Ajuste a distância dos pés e o ângulo das pontas conforme a mobilidade do seu quadril.",
+      "O percurso da barra é menor que no convencional, mas exige bastante do quadril.",
+    ],
+  },
+  "Levantamento terra com barra hexagonal": {
+    equipamento: "Barra hexagonal (trap bar)",
+    posicao: "Entre dentro da barra e posicione os pés na largura dos quadris. Flexione quadril e joelhos e segure as alças laterais, com os braços estendidos, a coluna neutra e o peito aberto.",
+    execucao: [
+      "Inspire e contraia o abdômen, mantendo o tronco mais vertical.",
+      "Empurre o chão com os pés, estendendo quadril e joelhos, sem deixar o quadril subir mais rápido que os ombros.",
+      "Termine em pé, com os glúteos contraídos, e desça a barra de forma controlada até o chão.",
+    ],
+    respiracao: "Inspire e contraia o abdômen antes de puxar; expire ao final da subida.",
+    principais: ["Quadríceps", "Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Eretores da espinha", "Trapézio", "Antebraço (pegada)"],
+    erros: [
+      "Arredondar a coluna na saída do chão",
+      "Subir o quadril antes dos ombros",
+      "Puxar com os braços em vez de empurrar o chão",
+    ],
+    dicas: [
+      "Como o peso fica ao lado do corpo, é uma forma mais acessível de aprender o levantamento terra.",
+      "Ajuste a altura das alças conforme a sua mobilidade e a carga.",
+    ],
+  },
+  "Bom dia (good morning)": {
+    equipamento: "Barra e rack",
+    posicao: "Apoie a barra na parte alta das costas, como no agachamento, e afaste os pés na largura dos ombros, com os joelhos levemente flexionados. Mantenha o peito aberto e a coluna neutra.",
+    execucao: [
+      "Inspire, contraia o abdômen e empurre o quadril para trás, inclinando o tronco para a frente.",
+      "Desça até o tronco ficar quase paralelo ao chão, ou até sentir o alongamento do posterior sem arredondar a coluna.",
+      "Contraia glúteos e posteriores e estenda o quadril para voltar à posição inicial.",
+    ],
+    respiracao: "Inspire ao descer e expire ao subir.",
+    principais: ["Posterior de coxa", "Glúteo máximo", "Eretores da espinha"],
+    secundarios: ["Abdômen (estabilização)"],
+    erros: [
+      "Arredondar a coluna ao descer",
+      "Usar uma carga alta demais para a técnica",
+      "Flexionar os joelhos como em um agachamento",
+    ],
+    dicas: [
+      "É um movimento exigente para a lombar: comece com carga leve e peça orientação de um profissional.",
+      "Desça apenas até onde conseguir manter a coluna reta.",
+    ],
+  },
+  "Pull-through no cabo": {
+    equipamento: "Polia baixa e corda",
+    posicao: "De costas para a polia, segure a corda com as duas mãos entre as pernas e afaste-se um pouco da máquina. Mantenha os pés na largura dos ombros e os joelhos levemente flexionados.",
+    execucao: [
+      "Empurre o quadril para trás e incline o tronco, deixando a corda passar entre as pernas.",
+      "Mantenha as costas retas e os braços relaxados, sentindo o alongamento do posterior de coxa.",
+      "Empurre o quadril para a frente, contraindo os glúteos, até ficar em pé.",
+    ],
+    respiracao: "Inspire ao inclinar e expire ao estender o quadril.",
+    principais: ["Glúteo máximo", "Posterior de coxa"],
+    secundarios: ["Eretores da espinha", "Abdômen (estabilização)"],
+    erros: [
+      "Puxar a corda com os braços",
+      "Arredondar a coluna ao inclinar",
+      "Hiperestender a lombar no final do movimento",
+    ],
+    dicas: [
+      "O movimento vem do quadril, e os braços só seguram a corda.",
+      "Fique de pé e terminar com os glúteos contraídos, sem arquear as costas.",
+    ],
+  },
+  "Swing com kettlebell": {
+    equipamento: "Kettlebell",
+    posicao: "Posicione o kettlebell à sua frente, um pouco à frente dos pés, que ficam um pouco além da largura dos ombros. Incline o quadril para trás e segure a alça com as duas mãos, com a coluna neutra.",
+    execucao: [
+      "Puxe o kettlebell para trás, entre as pernas, mantendo as costas retas, como em um impulso.",
+      "Estenda o quadril de forma explosiva, contraindo os glúteos, para lançar o kettlebell até a altura do peito, com os braços relaxados.",
+      "Deixe o kettlebell cair e leve o quadril para trás novamente para controlar a próxima repetição.",
+    ],
+    respiracao: "Expire de forma firme ao estender o quadril e inspire ao puxar o kettlebell para trás.",
+    principais: ["Glúteo máximo", "Posterior de coxa"],
+    secundarios: ["Eretores da espinha", "Abdômen", "Ombros e antebraço"],
+    erros: [
+      "Agachar em vez de dobrar o quadril",
+      "Levantar o kettlebell com os braços",
+      "Hiperestender a lombar no final do movimento",
+    ],
+    dicas: [
+      "A força vem da extensão do quadril; os braços só guiam o kettlebell.",
+      "Aprenda o movimento com orientação e carga leve antes de progredir.",
+    ],
+  },
+
+  /* ───────── GLÚTEOS ───────── */
+  "Elevação pélvica com barra (hip thrust)": {
+    equipamento: "Barra, banco e protetor de barra",
+    posicao: "Sente no chão com a parte alta das costas (abaixo das escápulas) apoiada na borda de um banco e a barra sobre o quadril, com protetor. Apoie os pés no chão, na largura dos quadris, com os joelhos flexionados.",
+    execucao: [
+      "Empurre o chão com os pés e eleve o quadril até que o tronco e as coxas fiquem alinhados, com os joelhos em cerca de 90°.",
+      "Contraia os glúteos por um instante no topo, com o queixo levemente voltado ao peito.",
+      "Desça o quadril de forma controlada, sem apoiar a barra no chão entre as repetições.",
+    ],
+    respiracao: "Expire ao subir o quadril e inspire ao descer.",
+    principais: ["Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Quadríceps", "Abdômen (estabilização)"],
+    erros: [
+      "Hiperestender a lombar no topo",
+      "Empurrar com as pontas dos pés, perdendo o apoio dos calcanhares",
+      "Deixar os joelhos caírem para dentro",
+    ],
+    dicas: [
+      "Ajuste a distância dos pés para que as canelas fiquem verticais no topo.",
+      "Use protetor na barra e um apoio firme para as costas.",
+    ],
+  },
+  "Elevação pélvica na máquina": {
+    equipamento: "Máquina de hip thrust",
+    posicao: "Sente na máquina com a parte alta das costas apoiada no encosto e o cinto (ou a almofada) sobre o quadril. Apoie os pés na plataforma ou no chão, com os joelhos flexionados.",
+    execucao: [
+      "Empurre os pés contra o chão e eleve o quadril até o tronco e as coxas ficarem alinhados.",
+      "Contraia os glúteos no topo, mantendo as costelas para baixo.",
+      "Desça de forma controlada até a posição inicial.",
+    ],
+    respiracao: "Expire ao subir o quadril e inspire ao descer.",
+    principais: ["Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Quadríceps"],
+    erros: [
+      "Hiperestender a lombar no topo",
+      "Deixar os joelhos caírem para dentro",
+      "Descer sem controle",
+    ],
+    dicas: [
+      "Ajuste a máquina para que o apoio das costas fique abaixo das escápulas.",
+      "A máquina dispensa montar a barra, o que facilita progredir com mais carga.",
+    ],
+  },
+  "Elevação pélvica unilateral": {
+    equipamento: "Banco e peso corporal (ou halter)",
+    posicao: "Apoie a parte alta das costas na borda de um banco, com um pé no chão e a outra perna estendida ou com o joelho flexionado junto ao peito. Mantenha o quadril nivelado.",
+    execucao: [
+      "Empurre o pé de apoio contra o chão e eleve o quadril até alinhar tronco e coxa.",
+      "Contraia o glúteo da perna de apoio no topo, sem deixar o quadril girar.",
+      "Desça de forma controlada, mantendo a pelve nivelada.",
+    ],
+    respiracao: "Expire ao subir o quadril e inspire ao descer.",
+    principais: ["Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Glúteo médio", "Abdômen (estabilização)"],
+    erros: [
+      "Deixar o quadril girar ou cair para o lado da perna livre",
+      "Hiperestender a lombar",
+      "Empurrar com as pontas dos pés",
+    ],
+    dicas: [
+      "Domine a versão com as duas pernas antes de usar uma só.",
+      "Faça o mesmo número de repetições nos dois lados.",
+    ],
+  },
+  "Ponte de glúteos": {
+    equipamento: "Peso corporal (ou anilha)",
+    posicao: "Deite de costas no chão, com os joelhos flexionados e os pés apoiados na largura dos quadris. Mantenha os braços ao lado do corpo.",
+    execucao: [
+      "Empurre os pés contra o chão e eleve o quadril até formar uma linha dos ombros aos joelhos.",
+      "Contraia os glúteos no topo por um instante, sem arquear a lombar.",
+      "Desça devagar até quase tocar o chão e repita.",
+    ],
+    respiracao: "Expire ao subir o quadril e inspire ao descer.",
+    principais: ["Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Arquear a lombar para subir mais",
+      "Deixar os joelhos caírem para dentro ou abrirem demais",
+      "Empurrar com as pontas dos pés",
+    ],
+    dicas: [
+      "Mantenha o abdômen firme e as costelas para baixo.",
+      "Se ficar fácil, use uma anilha sobre o quadril ou passe para o hip thrust.",
+    ],
+  },
+  "Ponte de glúteos unilateral": {
+    equipamento: "Peso corporal",
+    posicao: "Deite de costas, com um pé apoiado no chão e a outra perna estendida ou com o joelho junto ao peito. Mantenha os braços ao lado do corpo.",
+    execucao: [
+      "Empurre o pé de apoio contra o chão e eleve o quadril, alinhando ombros, quadril e joelho.",
+      "Contraia o glúteo no topo, sem deixar o quadril girar ou cair para um lado.",
+      "Desça devagar até quase tocar o chão e repita.",
+    ],
+    respiracao: "Expire ao subir o quadril e inspire ao descer.",
+    principais: ["Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Glúteo médio", "Abdômen (estabilização)"],
+    erros: [
+      "Deixar o quadril cair ou girar",
+      "Arquear a lombar",
+      "Fazer o movimento rápido, sem controle",
+    ],
+    dicas: [
+      "Comece com amplitude pequena se perder o equilíbrio.",
+      "Trabalhe as duas pernas com o mesmo número de repetições.",
+    ],
+  },
+  "Cadeira abdutora": {
+    equipamento: "Cadeira abdutora",
+    posicao: "Sente com as costas apoiadas e posicione as almofadas na parte externa dos joelhos, com as pernas juntas. Segure nas alças e mantenha os pés apoiados.",
+    execucao: [
+      "Abra as pernas de forma controlada, empurrando as almofadas para os lados.",
+      "Contraia os glúteos no ponto de maior abertura, sem tirar as costas do encosto.",
+      "Feche as pernas devagar, controlando o peso até a posição inicial.",
+    ],
+    respiracao: "Expire ao abrir as pernas e inspire ao fechá-las.",
+    principais: ["Glúteo médio", "Glúteo mínimo"],
+    secundarios: ["Glúteo máximo (fibras superiores)", "Tensor da fáscia lata"],
+    erros: [
+      "Usar o impulso do tronco para abrir as pernas",
+      "Soltar o peso ao fechar",
+      "Usar uma amplitude exagerada que tira o quadril do assento",
+    ],
+    dicas: [
+      "Mantenha o tronco estável e o abdômen firme durante toda a série.",
+      "Faça o movimento controlado, sem balançar.",
+    ],
+  },
+  "Abdução de quadril no cabo": {
+    equipamento: "Polia baixa e tornozeleira",
+    posicao: "Em pé, de lado para a polia, prenda a tornozeleira no tornozelo da perna mais afastada da máquina, com o cabo passando à frente do corpo. Segure em um apoio e mantenha o tronco ereto.",
+    execucao: [
+      "Leve a perna para o lado, afastando-a da máquina, sem girar o quadril.",
+      "Contraia o glúteo lateral no ponto mais alto, mantendo o tronco parado.",
+      "Retorne devagar, controlando a tensão do cabo.",
+    ],
+    respiracao: "Expire ao abrir a perna e inspire ao retornar.",
+    principais: ["Glúteo médio", "Glúteo mínimo"],
+    secundarios: ["Tensor da fáscia lata", "Abdômen e perna de apoio (estabilização)"],
+    erros: [
+      "Inclinar o tronco para o lado para levantar mais a perna",
+      "Girar o quadril e a ponta do pé para cima",
+      "Usar o impulso do cabo",
+    ],
+    dicas: [
+      "Mantenha o quadril alinhado e levante a perna só até onde o tronco permanecer parado.",
+      "Use uma carga que permita um movimento limpo e controlado.",
+    ],
+  },
+  "Coice na polia": {
+    equipamento: "Polia baixa e tornozeleira",
+    posicao: "De frente para a polia, prenda a tornozeleira em um dos tornozelos e segure no apoio da máquina, com o tronco levemente inclinado para a frente e o joelho de apoio levemente flexionado.",
+    execucao: [
+      "Estenda o quadril, levando a perna para trás, com o joelho quase estendido.",
+      "Contraia o glúteo no ponto mais alto, sem arquear a lombar.",
+      "Retorne devagar, controlando o cabo, sem deixar a perna descansar entre as repetições.",
+    ],
+    respiracao: "Expire ao levar a perna para trás e inspire ao retornar.",
+    principais: ["Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Abdômen e eretores da espinha (estabilização)"],
+    erros: [
+      "Hiperestender a lombar para levantar mais a perna",
+      "Balançar o tronco",
+      "Fazer o movimento rápido, sem controle",
+    ],
+    dicas: [
+      "A amplitude útil termina quando o quadril para de estender e a lombar começa a se mover.",
+      "Faça o mesmo número de repetições nas duas pernas.",
+    ],
+  },
+  "Coice na máquina": {
+    equipamento: "Máquina de coice (glute kickback)",
+    posicao: "Apoie o peito e as mãos na máquina, com um pé sobre a plataforma e o outro apoiado no chão. Mantenha o tronco firme e a coluna neutra.",
+    execucao: [
+      "Empurre a plataforma para trás estendendo o quadril, mantendo a lombar parada.",
+      "Contraia o glúteo no final do movimento, por um instante.",
+      "Retorne devagar, controlando o peso, sem deixar a pelve se mover.",
+    ],
+    respiracao: "Expire ao empurrar a plataforma e inspire ao retornar.",
+    principais: ["Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Arquear a lombar para levar a perna mais para trás",
+      "Usar impulso do tronco",
+      "Soltar o peso ao retornar",
+    ],
+    dicas: [
+      "Ajuste a máquina para que o quadril fique alinhado ao eixo do movimento.",
+      "Foque na contração do glúteo no final do movimento.",
+    ],
+  },
+  "Coice quatro apoios com caneleira": {
+    equipamento: "Caneleira (opcional) e tapete",
+    posicao: "Apoie mãos e joelhos no chão, com as mãos sob os ombros e os joelhos sob o quadril. Se usar caneleira, prenda-a no tornozelo ou na dobra do joelho da perna que vai trabalhar.",
+    execucao: [
+      "Contraia o abdômen e leve uma perna para trás e para cima, com o joelho flexionado em cerca de 90°.",
+      "Eleve até a coxa ficar alinhada com o tronco, sem arquear a lombar.",
+      "Retorne devagar, sem apoiar o joelho no chão, e repita.",
+    ],
+    respiracao: "Expire ao subir a perna e inspire ao descer.",
+    principais: ["Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Arquear a lombar para subir mais",
+      "Girar o quadril para o lado",
+      "Usar impulso para jogar a perna",
+    ],
+    dicas: [
+      "Mantenha o quadril nivelado, como se tivesse um copo apoiado nas costas.",
+      "Para aumentar a dificuldade, use a caneleira ou uma faixa elástica.",
+    ],
+  },
+  "Hidrante (fire hydrant)": {
+    equipamento: "Peso corporal (ou faixa elástica) e tapete",
+    posicao: "Apoie mãos e joelhos no chão, com as mãos sob os ombros e os joelhos sob o quadril. Mantenha o abdômen firme e as costas retas.",
+    execucao: [
+      "Mantendo o joelho flexionado em 90°, abra a perna para o lado, como um cão em um hidrante.",
+      "Eleve até a coxa ficar na altura do quadril, sem girar o tronco.",
+      "Retorne devagar à posição inicial e repita antes de trocar de perna.",
+    ],
+    respiracao: "Expire ao abrir a perna e inspire ao retornar.",
+    principais: ["Glúteo médio", "Glúteo mínimo"],
+    secundarios: ["Glúteo máximo", "Abdômen (estabilização)"],
+    erros: [
+      "Girar o tronco ou o quadril para levantar mais a perna",
+      "Deixar a coluna cair ou arquear",
+      "Fazer o movimento rápido, sem controle",
+    ],
+    dicas: [
+      "Mantenha o quadril nivelado e o tronco parado.",
+      "Uma faixa elástica acima dos joelhos aumenta a dificuldade.",
+    ],
+  },
+  "Caminhada lateral com elástico": {
+    equipamento: "Mini band (faixa elástica)",
+    posicao: "Coloque a faixa acima dos joelhos (ou nos tornozelos) e fique em um semiagachamento, com os pés na largura dos quadris, o tronco levemente inclinado e o abdômen firme.",
+    execucao: [
+      "Dê um passo largo para o lado, mantendo a tensão da faixa e os joelhos alinhados com os pés.",
+      "Traga o outro pé para perto, sem deixar a faixa afrouxar.",
+      "Continue na mesma direção e depois volte pelo lado oposto, mantendo a altura do quadril.",
+    ],
+    respiracao: "Respire de forma contínua e controlada, sem prender o ar.",
+    principais: ["Glúteo médio", "Glúteo mínimo"],
+    secundarios: ["Glúteo máximo", "Quadríceps", "Tensor da fáscia lata"],
+    erros: [
+      "Juntar os pés e deixar a faixa afrouxar",
+      "Deixar os joelhos caírem para dentro",
+      "Subir e descer o quadril a cada passo",
+    ],
+    dicas: [
+      "Escolha uma faixa com tensão que permita manter a postura sem balançar o tronco.",
+      "Mantenha o semiagachamento durante todo o percurso.",
+    ],
+  },
+
+  /* ───────── ADUTORES ───────── */
+  "Cadeira adutora": {
+    equipamento: "Cadeira adutora",
+    posicao: "Sente com as costas apoiadas e posicione as almofadas na parte interna dos joelhos, com as pernas abertas em uma amplitude confortável. Segure nas alças.",
+    execucao: [
+      "Aproxime as pernas de forma controlada, apertando as almofadas uma contra a outra.",
+      "Contraia os adutores por um instante, quando as pernas estiverem juntas.",
+      "Abra as pernas devagar, controlando o peso, até a posição inicial.",
+    ],
+    respiracao: "Expire ao juntar as pernas e inspire ao abri-las.",
+    principais: ["Adutores (magno, longo, curto, pectíneo e grácil)"],
+    secundarios: ["Abdômen (estabilização)"],
+    erros: [
+      "Começar com uma abertura exagerada, que alonga demais o músculo",
+      "Usar impulso do tronco",
+      "Soltar o peso ao abrir as pernas",
+    ],
+    dicas: [
+      "Ajuste a amplitude inicial para uma abertura confortável.",
+      "Faça o movimento em um ritmo controlado, sem balançar.",
+    ],
+  },
+  "Adução de quadril no cabo": {
+    equipamento: "Polia baixa e tornozeleira",
+    posicao: "Em pé, de lado para a polia, prenda a tornozeleira no tornozelo da perna mais próxima da máquina, com o cabo passando por dentro da perna de apoio. Segure em um apoio e mantenha o tronco ereto.",
+    execucao: [
+      "Leve a perna de trabalho em direção à outra, passando à frente da perna de apoio.",
+      "Contraia os adutores no ponto de maior aproximação, sem girar o quadril.",
+      "Retorne devagar, controlando a tensão do cabo.",
+    ],
+    respiracao: "Expire ao levar a perna para dentro e inspire ao retornar.",
+    principais: ["Adutores (magno, longo, curto, pectíneo e grácil)"],
+    secundarios: ["Abdômen e perna de apoio (estabilização)"],
+    erros: [
+      "Inclinar o tronco para o lado para ajudar",
+      "Girar o quadril",
+      "Deixar o cabo puxar a perna sem controle",
+    ],
+    dicas: [
+      "Use cargas moderadas e foque no controle da volta.",
+      "Faça o mesmo número de repetições nas duas pernas.",
+    ],
+  },
+  "Agachamento sumô": {
+    equipamento: "Halter, kettlebell ou barra (opcional)",
+    posicao: "Afaste bem os pés, além da largura dos ombros, com as pontas voltadas para fora. Se usar um halter, segure-o com as duas mãos entre as pernas, com os braços estendidos.",
+    execucao: [
+      "Inspire, contraia o abdômen e desça levando o quadril para baixo, com os joelhos acompanhando a direção dos pés.",
+      "Desça até a coxa ficar paralela ao chão, mantendo o tronco ereto.",
+      "Empurre o chão para os lados e para cima, apertando glúteos e adutores, até estender as pernas.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Quadríceps", "Glúteo máximo", "Adutores"],
+    secundarios: ["Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Deixar os joelhos caírem para dentro",
+      "Inclinar o tronco para a frente",
+      "Descer com os calcanhares fora do chão",
+    ],
+    dicas: [
+      "Ajuste o ângulo das pontas dos pés ao que o quadril permitir, mantendo os joelhos na linha dos pés.",
+      "O halter à frente ajuda a manter o tronco ereto.",
+    ],
+  },
+  "Afundo lateral": {
+    equipamento: "Peso corporal ou halter",
+    posicao: "Em pé, com os pés juntos ou na largura dos quadris e as pontas voltadas para a frente. Segure um halter junto ao peito, se for usar carga.",
+    execucao: [
+      "Dê um passo largo para o lado e leve o quadril para trás e para baixo, flexionando o joelho da perna que deu o passo.",
+      "Mantenha a outra perna estendida, com os dois pés apoiados no chão e apontando para a frente.",
+      "Empurre o chão com o pé que deu o passo para voltar à posição inicial.",
+    ],
+    respiracao: AGACHAR,
+    principais: ["Adutores", "Quadríceps", "Glúteo máximo"],
+    secundarios: ["Posterior de coxa", "Abdômen (estabilização)"],
+    erros: [
+      "Deixar o joelho flexionado cair para dentro",
+      "Levantar o calcanhar da perna que dá o passo",
+      "Inclinar demais o tronco para a frente",
+    ],
+    dicas: [
+      "Comece com um passo curto e amplitude menor, aumentando aos poucos.",
+      "Mantenha o peito aberto e o peso no pé que flexiona.",
+    ],
+  },
+  "Prancha Copenhagen": {
+    equipamento: "Banco",
+    posicao: "Deite de lado, com o antebraço de baixo apoiado no chão sob o ombro e a perna de cima apoiada sobre um banco (joelho ou tornozelo). A perna de baixo fica sob o banco, sem tocar o chão.",
+    execucao: [
+      "Eleve o quadril, empurrando a perna de cima contra o banco, até o corpo formar uma linha reta.",
+      "Mantenha a posição, com o abdômen firme e os adutores da perna de cima contraídos.",
+      "Desça devagar, controlando o movimento, e troque de lado.",
+    ],
+    respiracao: "Respire de forma contínua, sem prender o ar durante a sustentação.",
+    principais: ["Adutores da perna de cima"],
+    secundarios: ["Oblíquos", "Glúteo médio", "Ombro (estabilização)"],
+    erros: [
+      "Deixar o quadril cair",
+      "Girar o tronco para a frente ou para trás",
+      "Segurar a respiração durante a sustentação",
+    ],
+    dicas: [
+      "Comece com o joelho apoiado no banco e a perna de baixo flexionada, para reduzir a dificuldade.",
+      "Aumente o tempo de sustentação aos poucos.",
+    ],
+  },
+
+  /* ───────── PANTURRILHAS E TIBIAL ───────── */
+  "Panturrilha em pé na máquina": {
+    equipamento: "Máquina de panturrilha em pé",
+    posicao: "Posicione os ombros sob as almofadas e apoie as pontas dos pés na plataforma, com os calcanhares para fora. Mantenha os joelhos quase estendidos e o tronco ereto.",
+    execucao: [
+      "Desça os calcanhares abaixo da plataforma até sentir o alongamento da panturrilha.",
+      "Eleve o corpo empurrando com as pontas dos pés, o mais alto que conseguir.",
+      "Faça uma pausa curta no topo e desça devagar, controlando o movimento.",
+    ],
+    respiracao: "Expire ao subir e inspire ao descer.",
+    principais: ["Gastrocnêmio"],
+    secundarios: ["Sóleo", "Tibial posterior"],
+    erros: [
+      "Fazer repetições curtas, sem usar toda a amplitude",
+      "Flexionar os joelhos para ajudar a subir",
+      "Quicar no ponto mais baixo",
+    ],
+    dicas: [
+      "A pausa no alongamento e no topo aumenta a eficiência do exercício.",
+      "Use uma velocidade lenta e controlada.",
+    ],
+  },
+  "Panturrilha em pé no Smith": {
+    equipamento: "Smith machine e um step (ou anilha)",
+    posicao: "Apoie a barra nos ombros e posicione as pontas dos pés sobre um step ou uma anilha, com os calcanhares para fora. Gire os punhos para destravar a barra.",
+    execucao: [
+      "Desça os calcanhares abaixo da borda do apoio até sentir o alongamento da panturrilha.",
+      "Eleve o corpo empurrando com as pontas dos pés, o mais alto que conseguir.",
+      "Pause no topo e desça devagar. Ao fim da série, trave a barra nos ganchos.",
+    ],
+    respiracao: "Expire ao subir e inspire ao descer.",
+    principais: ["Gastrocnêmio"],
+    secundarios: ["Sóleo"],
+    erros: [
+      "Perder o equilíbrio ao fazer o movimento rápido",
+      "Flexionar os joelhos para ajudar",
+      "Fazer movimentos curtos",
+    ],
+    dicas: [
+      "Use um apoio firme e estável para os pés.",
+      "Mantenha o corpo alinhado, sem inclinar o tronco para a frente.",
+    ],
+  },
+  "Panturrilha sentada (sóleo)": {
+    equipamento: "Máquina de panturrilha sentada",
+    posicao: "Sente com as pontas dos pés na plataforma e posicione a almofada sobre a parte baixa das coxas, perto dos joelhos, que ficam flexionados em cerca de 90°.",
+    execucao: [
+      "Destrave a máquina e desça os calcanhares até sentir o alongamento da panturrilha.",
+      "Eleve os calcanhares empurrando com as pontas dos pés, o mais alto que conseguir.",
+      "Faça uma pausa no topo e desça devagar, controlando o peso.",
+    ],
+    respiracao: "Expire ao subir e inspire ao descer.",
+    principais: ["Sóleo"],
+    secundarios: ["Gastrocnêmio"],
+    erros: [
+      "Fazer repetições curtas",
+      "Usar impulso ou quicar na parte mais baixa",
+      "Escolher uma carga que impede a amplitude completa",
+    ],
+    dicas: [
+      "Com os joelhos flexionados, o gastrocnêmio fica mais encurtado e o sóleo é mais exigido.",
+      "O sóleo costuma responder bem a séries com mais repetições.",
+    ],
+  },
+  "Panturrilha no leg press": {
+    equipamento: "Máquina de leg press",
+    posicao: "Sente na máquina com as costas apoiadas e coloque as pontas dos pés na parte baixa da plataforma, com as pernas estendidas, mas sem travar os joelhos.",
+    execucao: [
+      "Deixe a plataforma levar as pontas dos pés para trás, até sentir o alongamento da panturrilha.",
+      "Empurre a plataforma com as pontas dos pés, estendendo os tornozelos, o mais alto que conseguir.",
+      "Faça uma pausa no topo e retorne devagar, controlando o peso.",
+    ],
+    respiracao: "Expire ao empurrar e inspire ao retornar.",
+    principais: ["Gastrocnêmio"],
+    secundarios: ["Sóleo"],
+    erros: [
+      "Travar os joelhos ao estender as pernas",
+      "Usar uma carga excessiva e perder a amplitude",
+      "Deixar os pés escorregarem da plataforma",
+    ],
+    dicas: [
+      "Mantenha os joelhos levemente flexionados e fixos durante toda a série.",
+      "Certifique-se de que as travas de segurança do equipamento estão ajustadas.",
+    ],
+  },
+  "Panturrilha unilateral com halter": {
+    equipamento: "Degrau (ou step) e halter",
+    posicao: "Em pé sobre um degrau, apoie a ponta de um pé na borda e cruze a outra perna atrás. Segure um halter na mão do lado da perna de apoio e apoie a outra mão em uma parede ou barra.",
+    execucao: [
+      "Desça o calcanhar abaixo do degrau até sentir o alongamento da panturrilha.",
+      "Eleve o corpo empurrando com a ponta do pé, o mais alto que conseguir.",
+      "Pause no topo e desça devagar, controlando o movimento.",
+    ],
+    respiracao: "Expire ao subir e inspire ao descer.",
+    principais: ["Gastrocnêmio"],
+    secundarios: ["Sóleo", "Músculos estabilizadores do tornozelo"],
+    erros: [
+      "Perder o equilíbrio e usar a outra perna",
+      "Fazer o movimento rápido, quicando",
+      "Fazer amplitude curta",
+    ],
+    dicas: [
+      "Trabalhar uma perna por vez ajuda a equilibrar a força dos dois lados.",
+      "Segure no apoio apenas para equilíbrio, sem puxar o corpo para cima.",
+    ],
+  },
+  "Panturrilha no burrinho (donkey)": {
+    equipamento: "Máquina de burrinho (ou barra e apoio para as mãos)",
+    posicao: "Incline o tronco para a frente, com as mãos apoiadas, e posicione a carga (ou a almofada) sobre o quadril. Apoie as pontas dos pés na borda de uma plataforma, com as pernas estendidas.",
+    execucao: [
+      "Desça os calcanhares abaixo da plataforma até sentir o alongamento da panturrilha.",
+      "Eleve o corpo empurrando com as pontas dos pés, o mais alto que conseguir.",
+      "Pause no topo e desça devagar, controlando o peso.",
+    ],
+    respiracao: "Expire ao subir e inspire ao descer.",
+    principais: ["Gastrocnêmio"],
+    secundarios: ["Sóleo"],
+    erros: [
+      "Flexionar os joelhos para ajudar a subir",
+      "Deixar o peso quicar na parte baixa",
+      "Fazer repetições curtas",
+    ],
+    dicas: [
+      "Com o quadril flexionado, o gastrocnêmio trabalha com bom alongamento.",
+      "Mantenha uma velocidade lenta e controlada.",
+    ],
+  },
+  "Panturrilha no degrau (peso corporal)": {
+    equipamento: "Degrau ou step",
+    posicao: "Em pé na borda de um degrau, apoie as pontas dos pés e deixe os calcanhares para fora. Segure em uma parede ou corrimão para equilíbrio.",
+    execucao: [
+      "Desça os calcanhares abaixo do degrau até sentir o alongamento da panturrilha.",
+      "Eleve o corpo empurrando com as pontas dos pés, o mais alto que conseguir.",
+      "Faça uma pausa no topo e desça devagar.",
+    ],
+    respiracao: "Expire ao subir e inspire ao descer.",
+    principais: ["Gastrocnêmio"],
+    secundarios: ["Sóleo", "Músculos estabilizadores do tornozelo"],
+    erros: [
+      "Fazer movimentos curtos e rápidos",
+      "Flexionar os joelhos para ganhar impulso",
+      "Usar o apoio das mãos para subir",
+    ],
+    dicas: [
+      "Para aumentar a dificuldade, faça com uma perna só ou segure um halter.",
+      "Mantenha o corpo ereto durante todo o movimento.",
+    ],
+  },
+  "Tibial anterior (dorsiflexão)": {
+    equipamento: "Peso corporal, elástico ou máquina de tibial",
+    posicao: "Sente em uma cadeira com os calcanhares apoiados no chão, ou fique em pé com as costas apoiadas em uma parede e os pés um pouco à frente. Se usar elástico, prenda-o no topo do pé.",
+    execucao: [
+      "Mantendo os calcanhares no chão, levante as pontas dos pés em direção às canelas.",
+      "Contraia a parte da frente da perna (tibial anterior) no topo, por um instante.",
+      "Desça devagar, controlando o movimento.",
+    ],
+    respiracao: "Expire ao levantar os pés e inspire ao descer.",
+    principais: ["Tibial anterior"],
+    secundarios: ["Extensores dos dedos dos pés"],
+    erros: [
+      "Levantar os calcanhares do chão",
+      "Fazer o movimento rápido",
+      "Usar o impulso dos joelhos",
+    ],
+    dicas: [
+      "Comece com peso corporal e só depois aumente a resistência com elástico ou máquina.",
+      "É um músculo pequeno: use cargas leves e mais repetições.",
+    ],
+  },
+};
