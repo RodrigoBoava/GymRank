@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { User, CalendarDays, Scale, Ruler, Flame, Activity, Target, Loader2 } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../context/AuthContext";
 import Campo from "../components/Campo";
+import { hojeISO } from "../lib/datas";
 import {
   NIVEIS, OBJETIVOS, MET_FORCA, metDoCardio,
   calcularIdade, calcularTMB, calcularGastoDiario, calcularMeta, kcalPorMET,
@@ -24,8 +25,8 @@ function Opcoes({ rotulo, valor, onChange, opcoes }) {
             type="button" key={o.id} onClick={() => onChange(o.id)} aria-pressed={valor === o.id}
             className={`flex-1 rounded-xl border px-3 py-2.5 text-sm font-semibold transition ${
               valor === o.id
-                ? "border-lime-400 bg-lime-400 text-zinc-950"
-                : "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-600"
+                ? "border-brand-500 bg-brand-500 text-white"
+                : "border-white/10 bg-ink-900 text-zinc-300 hover:border-zinc-600"
             }`}
           >
             {o.nome}
@@ -38,11 +39,11 @@ function Opcoes({ rotulo, valor, onChange, opcoes }) {
 
 function Metrica({ icone: Icone, titulo, valor, texto }) {
   return (
-    <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5">
+    <div className="rounded-2xl border border-white/10 bg-ink-900 p-5">
       <div className="flex items-center gap-2 text-sm text-zinc-400">
-        <Icone className="size-5 text-lime-400" /> {titulo}
+        <Icone className="size-5 text-brand-400" /> {titulo}
       </div>
-      <p className="mt-2 text-4xl font-extrabold text-lime-400">
+      <p className="mt-2 text-4xl font-extrabold text-brand-400">
         {valor} <span className="text-base font-medium text-zinc-400">kcal/dia</span>
       </p>
       <p className="mt-2 text-sm text-zinc-500">{texto}</p>
@@ -51,7 +52,7 @@ function Metrica({ icone: Icone, titulo, valor, texto }) {
 }
 
 export default function Perfil() {
-  const { user, carregando: autenticando } = useAuth();
+  const { user, carregando: autenticando, recarregarPerfil } = useAuth();
   const [form, setForm] = useState(vazio);
   const [carregando, setCarregando] = useState(true);
   const [salvando, setSalvando] = useState(false);
@@ -69,6 +70,7 @@ export default function Perfil() {
     supabase
       .from("perfis")
       .select("*")
+      .eq("user_id", user.id)
       .maybeSingle()
       .then(({ data, error }) => {
         if (error) {
@@ -128,24 +130,33 @@ export default function Perfil() {
       objetivo: form.objetivo,
       atualizado_em: new Date().toISOString(),
     });
-    setSalvando(false);
+    if (error) {
+      setSalvando(false);
+      return setErro("Não foi possível salvar. Tente novamente.");
+    }
 
-    if (error) return setErro("Não foi possível salvar. Tente novamente.");
+    // Guarda o peso no histórico de peso corporal (aba Dados da ficha), sem erro fatal se falhar
+    await supabase
+      .from("peso_corporal")
+      .upsert({ user_id: user.id, data: hojeISO(), peso_kg: Number(form.peso_kg) }, { onConflict: "user_id,data" });
+
+    await recarregarPerfil?.();
+    setSalvando(false);
     setSalvo(true);
   }
 
   if (autenticando) return <p className="p-10 text-center text-zinc-400">Carregando...</p>;
   if (!user) return <Navigate to="/login" replace />;
 
-  const hojeIso = new Date().toISOString().slice(0, 10);
+  const hojeIso = hojeISO();
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-3xl font-extrabold">
-        Minha <span className="text-lime-400">ficha</span>
+      <h1 className="font-display text-4xl font-extrabold uppercase tracking-wide sm:text-5xl">
+        Meus <span className="text-brand-500">dados</span>
       </h1>
       <p className="mb-8 mt-2 text-zinc-400">
-        Com esses dados o {` `}app calcula sua taxa metabólica e quantas calorias você queima.
+        Com esses dados o app calcula sua taxa metabólica e quantas calorias você queima. Seus treinos, cargas e recordes ficam em <Link to="/ficha" className="font-semibold text-brand-400 hover:underline">Minha ficha</Link>.
       </p>
 
       {carregando ? (
@@ -153,7 +164,7 @@ export default function Perfil() {
       ) : (
         <div className="grid items-start gap-10 lg:grid-cols-2">
           {/* FORMULÁRIO */}
-          <form onSubmit={salvar} className="space-y-4 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6">
+          <form onSubmit={salvar} className="space-y-4 rounded-2xl border border-white/10 bg-ink-900/60 p-6">
             <Campo
               id="nome" label="Nome" icone={User} type="text" autoComplete="name"
               placeholder="Como quer ser chamado" value={form.nome} onChange={aoDigitar("nome")}
@@ -191,7 +202,7 @@ export default function Perfil() {
               </label>
               <select
                 id="nivel" value={form.nivel_atividade} onChange={aoDigitar("nivel_atividade")}
-                className="w-full rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-3 text-white outline-none focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30"
+                className="w-full rounded-xl border border-white/10 bg-ink-900 px-3 py-3 text-white outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30"
               >
                 {NIVEIS.map((n) => (
                   <option key={n.id} value={n.id}>{n.nome}: {n.desc}</option>
@@ -209,14 +220,14 @@ export default function Perfil() {
               </p>
             )}
             {salvo && (
-              <p role="status" className="rounded-lg border border-lime-400/30 bg-lime-400/10 px-3 py-2 text-sm text-lime-400">
+              <p role="status" className="rounded-lg border border-brand-500/30 bg-brand-500/10 px-3 py-2 text-sm text-brand-400">
                 Ficha salva!
               </p>
             )}
 
             <button
               type="submit" disabled={salvando}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-lime-400 py-3 font-bold text-zinc-950 transition hover:bg-lime-300 disabled:opacity-60"
+              className="btn-primary w-full disabled:opacity-60"
             >
               {salvando && <Loader2 className="size-5 animate-spin" />}
               {salvando ? "Salvando..." : "Salvar ficha"}
@@ -240,7 +251,7 @@ export default function Perfil() {
                   texto="Gasto diário ajustado ao seu objetivo. Nunca fica abaixo da sua TMB."
                 />
 
-                <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5">
+                <div className="rounded-2xl border border-white/10 bg-ink-900 p-5">
                   <p className="text-sm font-semibold">Quanto você queima em uma sessão (estimativa)</p>
                   <ul className="mt-3 space-y-2 text-sm text-zinc-300">
                     {[
@@ -250,14 +261,14 @@ export default function Perfil() {
                     ].map(([nome, kcal]) => (
                       <li key={nome} className="flex justify-between">
                         <span>{nome}</span>
-                        <span className="font-mono text-lime-400">~{kcal} kcal</span>
+                        <span className="font-mono text-brand-400">~{kcal} kcal</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </>
             ) : (
-              <div className="rounded-2xl border border-dashed border-zinc-700 p-8 text-center text-zinc-400">
+              <div className="rounded-2xl border border-dashed border-white/15 p-8 text-center text-zinc-400">
                 Preencha sexo, nascimento, peso e altura para ver sua taxa metabólica e sua meta de calorias.
               </div>
             )}

@@ -21,7 +21,7 @@ function Numero({ rotulo, valor, onChange, onBlur, min = 1, max, passo = 1 }) {
         value={valor ?? ""}
         onChange={(e) => onChange(e.target.value)}
         onBlur={onBlur}
-        className="rounded-lg border border-zinc-700 bg-zinc-950 px-2 py-1.5 text-sm text-white outline-none focus:border-lime-400"
+        className="rounded-lg border border-white/15 bg-ink-950 px-2 py-1.5 text-sm text-white outline-none focus:border-brand-500"
       />
     </label>
   );
@@ -50,6 +50,7 @@ export default function Treino() {
     supabase
       .from("perfis")
       .select("peso_kg")
+      .eq("user_id", user.id)
       .maybeSingle()
       .then(({ data }) => setPesoKg(data?.peso_kg ?? null));
   }, [user]);
@@ -125,7 +126,7 @@ export default function Treino() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="text-3xl font-extrabold">
-        Meu <span className="text-lime-400">treino semanal</span>
+        Meu <span className="text-brand-400">treino semanal</span>
       </h1>
       <p className="mt-2 text-zinc-400">
         Escolha o dia, adicione os exercícios e defina séries, repetições e carga.
@@ -143,15 +144,15 @@ export default function Treino() {
               onClick={() => setDia(d.id)}
               className={`flex shrink-0 items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition ${
                 ativo
-                  ? "border-lime-400 bg-lime-400 text-zinc-950"
-                  : "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-600"
+                  ? "border-brand-500 bg-brand-500 text-white"
+                  : "border-white/10 bg-ink-900 text-zinc-300 hover:border-zinc-600"
               }`}
             >
               {d.curto}
               {qtd > 0 && (
                 <span
                   className={`rounded-full px-1.5 text-xs ${
-                    ativo ? "bg-zinc-950 text-lime-400" : "bg-zinc-800 text-zinc-300"
+                    ativo ? "bg-ink-950 text-brand-400" : "bg-ink-800 text-zinc-300"
                   }`}
                 >
                   {qtd}
@@ -178,12 +179,12 @@ export default function Treino() {
 
           {itensDoDia.length > 0 &&
             (gasto ? (
-              <p className="mt-2 inline-flex items-center gap-2 rounded-lg bg-lime-400/10 px-3 py-1.5 text-sm text-lime-400">
+              <p className="mt-2 inline-flex items-center gap-2 rounded-lg bg-brand-500/10 px-3 py-1.5 text-sm text-brand-400">
                 🔥 Queima estimada: <strong>~{gasto.total} kcal</strong>
               </p>
             ) : (
               <p className="mt-2 text-sm text-zinc-500">
-                <Link to="/perfil" className="text-lime-400 hover:underline">Preencha sua ficha</Link>{" "}
+                <Link to="/perfil" className="text-brand-400 hover:underline">Preencha sua ficha</Link>{" "}
                 para ver a queima calórica estimada.
               </p>
             ))}
@@ -191,21 +192,21 @@ export default function Treino() {
           {carregando ? (
             <p className="mt-6 text-zinc-500">Carregando seu treino...</p>
           ) : itensDoDia.length === 0 ? (
-            <div className="mt-6 rounded-2xl border border-dashed border-zinc-700 p-8 text-center text-zinc-400">
+            <div className="mt-6 rounded-2xl border border-dashed border-white/15 p-8 text-center text-zinc-400">
               Nenhum exercício neste dia ainda. Escolha ao lado e clique em <strong>Adicionar</strong>.
             </div>
           ) : (
             <div className="mt-6 space-y-6">
               {porGrupo.map(([grupoId, lista]) => (
                 <div key={grupoId}>
-                  <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-lime-400">
+                  <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-brand-400">
                     {nomeDoGrupo(grupoId)}
                   </h3>
                   <ul className="space-y-3">
                     {lista.map((item) => {
                       const cardio = item.grupo === "cardio";
                       return (
-                        <li key={item.id} className="rounded-xl border border-zinc-800 bg-zinc-900 p-4">
+                        <li key={item.id} className="rounded-xl border border-white/10 bg-ink-900 p-4">
                           <div className="flex items-start justify-between gap-3">
                             <p className="font-semibold">{item.exercicio}</p>
                             <button
@@ -260,13 +261,13 @@ export default function Treino() {
           <SeletorExercicios
             renderAcao={(grupo, nome) =>
               adicionados.has(`${grupo.id}|${nome}`) ? (
-                <span className="flex shrink-0 items-center gap-1 text-xs font-semibold text-lime-400">
+                <span className="flex shrink-0 items-center gap-1 text-xs font-semibold text-brand-400">
                   <Check className="size-4" /> No treino
                 </span>
               ) : (
                 <button
                   onClick={() => adicionar(grupo, nome)}
-                  className="flex shrink-0 items-center gap-1 rounded-lg bg-lime-400 px-2.5 py-1 text-xs font-bold text-zinc-950 transition hover:bg-lime-300"
+                  className="flex shrink-0 items-center gap-1 rounded-lg bg-brand-500 px-2.5 py-1 text-xs font-bold text-white transition hover:bg-brand-400"
                 >
                   <Plus className="size-4" /> Adicionar
                 </button>

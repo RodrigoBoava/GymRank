@@ -5,5 +5,5 @@ export const LINKS = [
   { to: "/exercicios", nome: "Exercícios", icone: Dumbbell },
   { to: "/ranking", nome: "Ranking", icone: Trophy },
   { to: "/calorias", nome: "Calorias", icone: Flame },
-  { to: "/perfil", nome: "Ficha", icone: User },
+  { to: "/ficha", nome: "Ficha", icone: User },
 ];

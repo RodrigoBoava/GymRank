@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowRight, CalendarDays, Calculator, Camera, Check, Dumbbell,
-  ShieldCheck, Smartphone, Trophy, UserPlus,
+  ClipboardList, ShieldCheck, Smartphone, Trophy, UserPlus,
 } from "lucide-react";
 import DumbbellAnimation from "../components/DumbbellAnimation";
 import Contador from "../components/Contador";
@@ -30,14 +30,14 @@ const numeros = [
 const recursos = [
   { icone: CalendarDays, titulo: "Treino semanal", texto: "Monte cada dia da semana com os exercícios certos e defina séries, repetições e carga.", status: "Disponível" },
   { icone: Dumbbell, titulo: "Catálogo anatômico", texto: "Exercícios divididos por grupo e por região do músculo, do quadríceps ao core.", status: "Disponível" },
-  { icone: Calculator, titulo: "Ficha inteligente", texto: "Taxa metabólica, gasto diário e meta de calorias calculados a partir dos seus dados.", status: "Disponível" },
+  { icone: ClipboardList, titulo: "Minha ficha", texto: "Fichas A/B/C, carga de cada série, recordes pessoais, evolução e frequência na academia.", status: "Disponível" },
   { icone: Trophy, titulo: "Ranking", texto: "Carga e tempo viram pontos para você comparar seu desempenho com outros atletas.", status: "Em breve" },
 ];
 
 const passos = [
   { icone: UserPlus, titulo: "Crie sua conta", texto: "Cadastro rápido com e-mail e senha. Seu treino fica salvo só para você." },
   { icone: CalendarDays, titulo: "Monte sua semana", texto: "Escolha o grupo muscular de cada dia e adicione os exercícios com séries e carga." },
-  { icone: Trophy, titulo: "Evolua e suba", texto: "Acompanhe seu gasto de calorias e prepare-se para disputar o ranking." },
+  { icone: Trophy, titulo: "Evolua e suba", texto: "Acompanhe suas cargas, recordes e frequência e prepare-se para disputar o ranking." },
 ];
 
 const diferenciais = [
@@ -171,7 +171,7 @@ export default function Home() {
             <ul className="mt-6 space-y-3">
               {[
                 "Monte o treino de segunda a domingo",
-                "Defina séries, repetições e carga de cada exercício",
+                "Registre a carga de cada série e acompanhe seus recordes",
                 "Veja a queima calórica estimada do seu dia",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-zinc-300">

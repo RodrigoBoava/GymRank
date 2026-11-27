@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import Campo from "../components/Campo";
 import { PASSOS, CONDICOES } from "../data/questionario";
 import { marcarPulou, objetivoDaMeta } from "../lib/onboarding";
+import { hojeISO } from "../lib/datas";
 import { calcularIdade, calcularTMB, calcularGastoDiario, calcularMeta } from "../lib/calorias";
 
 const tituloClasse =
@@ -62,7 +63,7 @@ function Questionario({ user, perfil, recarregarPerfil }) {
   const total = PASSOS.length + 2;
   const passo = PASSOS[indice];
   const tela = passo ? "escolha" : indice === PASSOS.length ? "corpo" : "saude";
-  const hojeIso = new Date().toISOString().slice(0, 10);
+  const hojeIso = hojeISO();
 
   const definir = (campo, valor) => setR((a) => ({ ...a, [campo]: valor }));
 
@@ -179,7 +180,7 @@ function Questionario({ user, perfil, recarregarPerfil }) {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/treino" className="btn-primary">Montar meu treino</Link>
-              <Link to="/perfil" className="btn-ghost">Ver minha ficha</Link>
+              <Link to="/ficha" className="btn-ghost">Ver minha ficha</Link>
             </div>
           </motion.div>
         </div>

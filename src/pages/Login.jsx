@@ -32,7 +32,7 @@ export default function Login() {
       rodape={
         <>
           Ainda não tem conta?{" "}
-          <Link to="/cadastro" className="font-semibold text-lime-400 hover:underline">Cadastre-se</Link>
+          <Link to="/cadastro" className="font-semibold text-brand-400 hover:underline">Cadastre-se</Link>
         </>
       }
     >
@@ -62,10 +62,7 @@ export default function Login() {
           </p>
         )}
 
-        <button
-          type="submit" disabled={enviando}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-lime-400 py-3 font-bold text-zinc-950 transition hover:bg-lime-300 disabled:opacity-60"
-        >
+        <button type="submit" disabled={enviando} className="btn-primary w-full disabled:opacity-60">
           {enviando && <Loader2 className="size-5 animate-spin" />}
           {enviando ? "Entrando..." : "Entrar"}
         </button>

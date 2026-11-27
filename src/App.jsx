@@ -4,6 +4,7 @@ import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import BottomNav from "./components/BottomNav";
 import Rodape from "./components/Rodape";
+import RotaPrivada from "./components/RotaPrivada";
 import Home from "./pages/Home";
 import Ranking from "./pages/Ranking";
 import Calorias from "./pages/Calorias";
@@ -12,8 +13,10 @@ import Cadastro from "./pages/Cadastro";
 import Painel from "./pages/Painel";
 import Exercicios from "./pages/Exercicios";
 import Treino from "./pages/Treino";
+import Ficha from "./pages/Ficha";
 import Perfil from "./pages/Perfil";
 import Onboarding from "./pages/Onboarding";
+import NaoEncontrada from "./pages/NaoEncontrada";
 import { useAuth } from "./context/AuthContext";
 import { jaPulou } from "./lib/onboarding";
 
@@ -32,6 +35,8 @@ function GuardaOnboarding() {
 
   return null;
 }
+
+const privada = (elemento) => <RotaPrivada>{elemento}</RotaPrivada>;
 
 export default function App() {
   const location = useLocation();
@@ -57,15 +62,19 @@ export default function App() {
             >
               <Routes location={location}>
                 <Route path="/" element={<Home />} />
+                <Route path="/exercicios" element={<Exercicios />} />
                 <Route path="/ranking" element={<Ranking />} />
                 <Route path="/calorias" element={<Calorias />} />
-                <Route path="/exercicios" element={<Exercicios />} />
-                <Route path="/treino" element={<Treino />} />
-                <Route path="/perfil" element={<Perfil />} />
-                <Route path="/boas-vindas" element={<Onboarding />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/cadastro" element={<Cadastro />} />
-                <Route path="/painel" element={<Painel />} />
+
+                <Route path="/painel" element={privada(<Painel />)} />
+                <Route path="/treino" element={privada(<Treino />)} />
+                <Route path="/ficha" element={privada(<Ficha />)} />
+                <Route path="/perfil" element={privada(<Perfil />)} />
+                <Route path="/boas-vindas" element={<Onboarding />} />
+
+                <Route path="*" element={<NaoEncontrada />} />
               </Routes>
             </motion.div>
           </AnimatePresence>

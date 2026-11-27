@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           {user ? (
             <>
-              <Link to="/perfil" className="btn-ghost btn-sm hidden md:inline-flex">
+              <Link to="/ficha" className="btn-ghost btn-sm hidden md:inline-flex">
                 Minha ficha
               </Link>
               <Link

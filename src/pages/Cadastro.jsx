@@ -7,7 +7,7 @@ import AuthLayout from "../components/AuthLayout";
 import Campo from "../components/Campo";
 
 const rotulos = ["Muito fraca", "Fraca", "Razoável", "Boa", "Forte"];
-const cores = ["bg-zinc-700", "bg-red-500", "bg-orange-400", "bg-yellow-400", "bg-lime-400"];
+const cores = ["bg-zinc-700", "bg-red-500", "bg-orange-400", "bg-azul-400", "bg-ok-500"];
 
 function forcaSenha(s) {
   let pontos = 0;
@@ -58,10 +58,10 @@ export default function Cadastro() {
       <AuthLayout
         titulo="Confirme seu e-mail"
         subtitulo="Quase lá!"
-        rodape={<Link to="/login" className="font-semibold text-lime-400 hover:underline">Ir para o login</Link>}
+        rodape={<Link to="/login" className="font-semibold text-brand-400 hover:underline">Ir para o login</Link>}
       >
         <div className="flex flex-col items-center gap-4 text-center">
-          <MailCheck className="size-14 text-lime-400" />
+          <MailCheck className="size-14 text-brand-400" />
           <p className="text-zinc-300">
             Enviamos um link de confirmação para <strong>{email}</strong>. Clique nele para ativar sua
             conta e depois faça login.
@@ -78,7 +78,7 @@ export default function Cadastro() {
       rodape={
         <>
           Já tem conta?{" "}
-          <Link to="/login" className="font-semibold text-lime-400 hover:underline">Entrar</Link>
+          <Link to="/login" className="font-semibold text-brand-400 hover:underline">Entrar</Link>
         </>
       }
     >
@@ -111,7 +111,7 @@ export default function Cadastro() {
             <div className="mt-2">
               <div className="flex gap-1">
                 {[0, 1, 2, 3].map((i) => (
-                  <div key={i} className={`h-1.5 flex-1 rounded-full ${i < forca ? cores[forca] : "bg-zinc-800"}`} />
+                  <div key={i} className={`h-1.5 flex-1 rounded-full ${i < forca ? cores[forca] : "bg-ink-800"}`} />
                 ))}
               </div>
               <p className="mt-1 text-xs text-zinc-500">Força da senha: {rotulos[forca]}</p>
@@ -133,7 +133,7 @@ export default function Cadastro() {
 
         <button
           type="submit" disabled={enviando}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-lime-400 py-3 font-bold text-zinc-950 transition hover:bg-lime-300 disabled:opacity-60"
+          className="btn-primary w-full disabled:opacity-60"
         >
           {enviando && <Loader2 className="size-5 animate-spin" />}
           {enviando ? "Criando conta..." : "Criar conta"}

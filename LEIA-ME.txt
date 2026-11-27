@@ -1,0 +1,12 @@
+GYMRANK - CODIGO CORRIGIDO + FASE 1 (Minha Ficha)
+
+1) Extraia este ZIP na raiz do projeto (onde fica o package.json) e aceite SUBSTITUIR os arquivos.
+2) Rode supabase/migracoes/001_ficha_treinos.sql no Supabase (SQL Editor > New query > Run).
+3) npm run dev  ->  abra /ficha
+
+Arquivos SUBSTITUIDOS: src/App.jsx, src/lib/erros.js, src/components/Navbar.jsx,
+  src/pages/{Home,Login,Cadastro,Painel,Ranking,Calorias,Perfil,Onboarding,Treino}.jsx
+Arquivos NOVOS: src/hooks/useFichas.js, src/components/RotaPrivada.jsx, src/pages/{Ficha,NaoEncontrada}.jsx,
+  src/lib/{datas,cargas,recordes,frequencia,catalogo,registros}.js, src/components/{Folha,Toast,Stepper,BotaoComoFazer,CelebracaoRecorde}.jsx,
+  src/components/ficha/*, supabase/, tests/
+Nao mexi em: calorias.js, marca.js, onboarding.js, supabase.js, navegacao.js (ja estavam certos), AuthLayout, BottomNav, Campo, Contador, DumbbellAnimation, Rodape.
