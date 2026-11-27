@@ -96,8 +96,8 @@ export default function Treino() {
     setItens((atual) => atual.map((i) => (i.id === id ? { ...i, [campo]: numero } : i)));
   }
 
-  async function salvar(id) {
-    const item = itens.find((i) => i.id === id);
+  async function salvar(id, itemNovo) {
+    const item = itemNovo ?? itens.find((i) => i.id === id);
     if (!item) return;
     const { error } = await supabase
       .from("treino_itens")
@@ -105,11 +105,35 @@ export default function Treino() {
         series: item.series,
         repeticoes: item.repeticoes,
         carga_kg: item.carga_kg,
+        carga_unilateral: item.carga_unilateral ?? false,
+        carga_por_lado_kg: item.carga_unilateral ? item.carga_por_lado_kg : null,
         duracao_min: item.duracao_min,
       })
       .eq("id", id);
     if (error) setErro("Não foi possível salvar a alteração. Confira os valores digitados.");
     else setErro("");
+  }
+
+  // Unilateral: o valor digitado é por lado e a carga total é sempre o dobro (30 -> 60)
+  function alterarPorLado(id, valor) {
+    const lado = valor === "" ? null : Number(valor);
+    setItens((atual) =>
+      atual.map((i) => (i.id === id ? { ...i, carga_por_lado_kg: lado, carga_kg: lado === null ? null : lado * 2 } : i))
+    );
+  }
+
+  function trocarModoCarga(id, unilateral) {
+    const item = itens.find((i) => i.id === id);
+    if (!item || Boolean(item.carga_unilateral) === unilateral) return;
+    const novo = unilateral
+      ? {
+          ...item,
+          carga_unilateral: true,
+          carga_por_lado_kg: item.carga_kg == null ? null : item.carga_kg / 2,
+        }
+      : { ...item, carga_unilateral: false, carga_por_lado_kg: null };
+    setItens((atual) => atual.map((i) => (i.id === id ? novo : i)));
+    salvar(id, novo);
   }
 
   async function remover(id) {
@@ -237,11 +261,49 @@ export default function Treino() {
                                   onChange={(v) => alterar(item.id, "repeticoes", v)}
                                   onBlur={() => salvar(item.id)}
                                 />
-                                <Numero
-                                  rotulo="Carga (kg)" min={0} passo={0.5} valor={item.carga_kg}
-                                  onChange={(v) => alterar(item.id, "carga_kg", v)}
-                                  onBlur={() => salvar(item.id)}
-                                />
+                                <div className="flex flex-col gap-1 text-xs text-zinc-400">
+                                  <span>Carga</span>
+                                  <div role="group" aria-label="Tipo de carga" className="flex w-fit rounded-lg border border-white/15 p-0.5">
+                                    {[[false, "Carga total"], [true, "Unilateral"]].map(([uni, nomeModo]) => (
+                                      <button
+                                        key={nomeModo}
+                                        type="button"
+                                        aria-pressed={Boolean(item.carga_unilateral) === uni}
+                                        onClick={() => trocarModoCarga(item.id, uni)}
+                                        className={`rounded-md px-3 py-1.5 text-xs font-bold transition ${
+                                          Boolean(item.carga_unilateral) === uni
+                                            ? "bg-brand-500 text-white"
+                                            : "text-zinc-400 hover:text-white"
+                                        }`}
+                                      >
+                                        {nomeModo}
+                                      </button>
+                                    ))}
+                                  </div>
+                                  <div className="mt-1 flex flex-wrap items-end gap-3">
+                                    {item.carga_unilateral ? (
+                                      <>
+                                        <Numero
+                                          rotulo="Por lado (kg)" min={0} passo={0.5} valor={item.carga_por_lado_kg}
+                                          onChange={(v) => alterarPorLado(item.id, v)}
+                                          onBlur={() => salvar(item.id)}
+                                        />
+                                        <p className="pb-1.5 text-sm text-zinc-300">
+                                          Carga total:{" "}
+                                          <strong className="text-brand-400">
+                                            {item.carga_kg == null ? "—" : `${item.carga_kg} kg`}
+                                          </strong>
+                                        </p>
+                                      </>
+                                    ) : (
+                                      <Numero
+                                        rotulo="Total (kg)" min={0} passo={0.5} valor={item.carga_kg}
+                                        onChange={(v) => alterar(item.id, "carga_kg", v)}
+                                        onBlur={() => salvar(item.id)}
+                                      />
+                                    )}
+                                  </div>
+                                </div>
                               </>
                             )}
                           </div>

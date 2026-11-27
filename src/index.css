@@ -44,6 +44,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
     -webkit-tap-highlight-color: transparent;
   }
   body {
