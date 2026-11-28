@@ -1,19 +1,31 @@
-export const CHAVE_PULOU = "gymrank:onboarding-pulado";
+// "Pular" é lembrado neste aparelho, por usuário, para o questionário não voltar a cada acesso.
+// (A resposta de verdade fica no banco: perfis.onboarding_concluido.)
+const chavePulou = (userId) => `gymrank:onboarding-pulado:${userId}`;
 
-export function jaPulou() {
+export function jaPulou(userId) {
+  if (!userId) return false;
   try {
-    return sessionStorage.getItem(CHAVE_PULOU) === "1";
+    return localStorage.getItem(chavePulou(userId)) === "1";
   } catch {
     return false;
   }
 }
 
-export function marcarPulou() {
+export function marcarPulou(userId) {
+  if (!userId) return;
   try {
-    sessionStorage.setItem(CHAVE_PULOU, "1");
+    localStorage.setItem(chavePulou(userId), "1");
   } catch {
     /* navegador sem armazenamento: segue sem salvar */
   }
+}
+
+// O questionário conta como feito se foi concluído OU se a ficha básica já está preenchida
+// (contas antigas que preencheram os dados pela tela de perfil).
+export function onboardingCompleto(perfil) {
+  if (!perfil) return false;
+  if (perfil.onboarding_concluido) return true;
+  return Boolean(perfil.sexo && perfil.data_nascimento && perfil.peso_kg && perfil.altura_cm);
 }
 
 // Objetivo usado no cálculo de calorias (perder = -15%, manter = 0, ganhar = +10%)

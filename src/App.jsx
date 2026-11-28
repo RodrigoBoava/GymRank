@@ -18,20 +18,36 @@ import Perfil from "./pages/Perfil";
 import Onboarding from "./pages/Onboarding";
 import NaoEncontrada from "./pages/NaoEncontrada";
 import { useAuth } from "./context/AuthContext";
-import { jaPulou } from "./lib/onboarding";
+import { supabase } from "./lib/supabase";
+import { jaPulou, onboardingCompleto } from "./lib/onboarding";
 
 const ENTRADAS = ["/", "/painel", "/login", "/cadastro"];
 
-// Quem ainda não respondeu o questionário é levado até ele ao entrar no site
+// Quem ainda não respondeu o questionário é levado até ele UMA vez, ao entrar no site.
+// A decisão vem do banco (e não só do estado em memória), então não se repete a cada login.
 function GuardaOnboarding() {
-  const { user, perfil, perfilCarregando } = useAuth();
+  const { user, perfil } = useAuth();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user || perfilCarregando || perfil?.onboarding_concluido || jaPulou()) return;
-    if (ENTRADAS.includes(pathname)) navigate("/boas-vindas", { replace: true });
-  }, [user, perfil, perfilCarregando, pathname, navigate]);
+    if (!user || !ENTRADAS.includes(pathname)) return;
+    if (jaPulou(user.id) || onboardingCompleto(perfil)) return;
+
+    let cancelado = false;
+    supabase
+      .from("perfis")
+      .select("onboarding_concluido,sexo,data_nascimento,peso_kg,altura_cm")
+      .eq("user_id", user.id)
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (cancelado || error) return; // em caso de erro, não incomoda o usuário
+        if (!onboardingCompleto(data)) navigate("/boas-vindas", { replace: true });
+      });
+    return () => {
+      cancelado = true;
+    };
+  }, [user, perfil, pathname, navigate]);
 
   return null;
 }

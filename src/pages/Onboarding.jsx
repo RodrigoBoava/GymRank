@@ -93,7 +93,7 @@ function Questionario({ user, perfil, recarregarPerfil }) {
   }
 
   function pular() {
-    marcarPulou();
+    marcarPulou(user.id);
     navigate("/painel");
   }
 
