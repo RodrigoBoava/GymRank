@@ -148,15 +148,15 @@ export default function Treino() {
   const diaAtual = DIAS.find((d) => d.id === dia);
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-3xl font-extrabold">
+    <main className="mx-auto w-full max-w-6xl overflow-x-clip px-4 py-10">
+      <h1 className="font-display text-4xl font-extrabold uppercase tracking-wide sm:text-5xl">
         Meu <span className="text-brand-400">treino semanal</span>
       </h1>
       <p className="mt-2 text-zinc-400">
         Escolha o dia, adicione os exercícios e defina séries, repetições e carga.
       </p>
 
-      <div className="mt-6 flex gap-2 overflow-x-auto pb-2" role="tablist">
+      <div className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0" role="tablist">
         {DIAS.map((d) => {
           const qtd = itens.filter((i) => i.dia === d.id).length;
           const ativo = d.id === dia;
@@ -193,10 +193,10 @@ export default function Treino() {
         </p>
       )}
 
-      <div className="mt-8 grid gap-10 lg:grid-cols-2">
+      <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-2">
         {/* TREINO DO DIA */}
-        <section>
-          <h2 className="text-xl font-bold">{diaAtual.nome}</h2>
+        <section className="min-w-0">
+          <h2 className="font-display text-3xl font-extrabold uppercase tracking-wide">{diaAtual.nome}</h2>
           <p className="mt-1 text-sm text-zinc-400">
             {itensDoDia.length} exercício(s) · {totalSeries} série(s)
           </p>
@@ -318,8 +318,8 @@ export default function Treino() {
         </section>
 
         {/* ESCOLHER EXERCÍCIOS */}
-        <section>
-          <h2 className="mb-4 text-xl font-bold">Adicionar exercícios</h2>
+        <section className="min-w-0">
+          <h2 className="mb-4 font-display text-3xl font-extrabold uppercase tracking-wide">Adicionar exercícios</h2>
           <SeletorExercicios
             renderAcao={(grupo, nome) =>
               adicionados.has(`${grupo.id}|${nome}`) ? (
