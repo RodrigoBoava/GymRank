@@ -7,8 +7,6 @@ import { useFichas } from "../hooks/useFichas";
 import { diaDaSemanaId, hojeISO, addDias, mesDe, formatarData } from "../lib/datas";
 import { estatisticasFrequencia } from "../lib/frequencia";
 import { formatarKg } from "../lib/cargas";
-import { ToastProvider } from "../components/Toast";
-import SecaoHidratacao from "../components/hidratacao/SecaoHidratacao";
 
 const ROTULO_TIPO = { carga: "Maior carga", e1rm: "1RM estimado", repeticoes: "Repetições" };
 
@@ -21,7 +19,7 @@ function Numero({ icone: Icone, rotulo, valor, cor = "text-brand-500" }) {
   );
 }
 
-function ConteudoPainel() {
+export default function Painel() {
   const { user } = useAuth();
   const f = useFichas();
   const [freq, setFreq] = useState([]);
@@ -80,8 +78,6 @@ function ConteudoPainel() {
         )}
       </section>
 
-      <SecaoHidratacao diasPlanejados={f.diasPlanejados} fichasCarregando={f.carregando} />
-
       <section className="cartao mt-4 p-5">
         <h2 className="flex items-center gap-2 font-display text-2xl font-extrabold uppercase tracking-wide">
           <Trophy className="size-5 text-brand-500" /> Recordes recentes
@@ -105,13 +101,5 @@ function ConteudoPainel() {
         )}
       </section>
     </main>
-  );
-}
-
-export default function Painel() {
-  return (
-    <ToastProvider>
-      <ConteudoPainel />
-    </ToastProvider>
   );
 }

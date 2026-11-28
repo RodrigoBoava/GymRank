@@ -1,5 +1,9 @@
-import { Camera, Flame, Target } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Camera, Droplet, Flame, Target } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
+import { useFichas } from "../hooks/useFichas";
+import { ToastProvider } from "../components/Toast";
+import SecaoHidratacao from "../components/hidratacao/SecaoHidratacao";
 import { calcularIdade, calcularTMB, calcularGastoDiario, calcularMeta } from "../lib/calorias";
 
 function metaDoPerfil(perfil) {
@@ -11,8 +15,33 @@ function metaDoPerfil(perfil) {
   return { tmb, gasto, meta: calcularMeta(gasto, perfil.objetivo, tmb) };
 }
 
+// Só montado com usuário logado (useFichas e a hidratação dependem do login)
+function HidratacaoDoUsuario() {
+  const f = useFichas();
+  return (
+    <ToastProvider>
+      <SecaoHidratacao diasPlanejados={f.diasPlanejados} fichasCarregando={f.carregando} />
+    </ToastProvider>
+  );
+}
+
+function ConviteHidratacao() {
+  return (
+    <section className="cartao mt-4 flex flex-col items-start gap-3 p-5 sm:flex-row sm:items-center">
+      <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-azul-500/10 text-azul-300">
+        <Droplet className="size-5" fill="currentColor" />
+      </span>
+      <div className="flex-1">
+        <h2 className="font-display text-2xl font-extrabold uppercase tracking-wide">Hidratação</h2>
+        <p className="text-sm text-zinc-400">Entre na sua conta para receber uma meta de água personalizada e registrar o que você bebe.</p>
+      </div>
+      <Link to="/login" className="btn-primary btn-sm">Entrar</Link>
+    </section>
+  );
+}
+
 export default function Calorias() {
-  const { perfil } = useAuth();
+  const { user, carregando, perfil } = useAuth();
   const m = metaDoPerfil(perfil);
 
   return (
@@ -43,6 +72,10 @@ export default function Calorias() {
           </div>
         </div>
       )}
+
+      <div className="mt-2">
+        {carregando ? null : user ? <HidratacaoDoUsuario /> : <ConviteHidratacao />}
+      </div>
 
       <div className="cartao mt-6 flex flex-col items-center gap-3 border-dashed p-10 text-center text-zinc-400">
         <Camera className="size-10 text-zinc-500" />
